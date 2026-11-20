@@ -1,0 +1,40 @@
+[
+  {
+    "game": "atlas",
+    "provider": "codex",
+    "requested_model": "gpt-6.2-sol",
+    "cli_version": "codex-cli 0.171.0-alpha.13",
+    "game_revision": "9eefa0e571eb053d3b0c5491d66a76d42b5fcb8e",
+    "brief_sha256": "1b5c1fe750240d6fb30e19b36487aade727e1c8f3d1dddbfa2a98670c38a4ef1",
+    "cli_elapsed_ms": 14571,
+    "answer": {
+      "choice": "crescent_passage",
+      "reason": "Crescent Passage takes at least six moves and requires the Channel relay in its shortest solution."
+    },
+    "verdict": {
+      "accepted": true,
+      "lights": 6962,
+      "par": 6,
+      "par_without_relay": -1
+    }
+  },
+  {
+    "game": "atlas",
+    "provider": "gemini",
+    "requested_model": "gemini-3.8-flash-low",
+    "cli_version": "1.5.13",
+    "game_revision": "9eefa0e571eb053d3b0c5491d66a76d42b5fcb8e",
+    "brief_sha256": "1b5c1fe750240d6fb30e19b36487aade727e1c8f3d1dddbfa2a98670c38a4ef1",
+    "cli_elapsed_ms": 53396,
+    "answer": {
+      "choice": "crescent_passage",
+      "reason": "Crescent Passage requires the channel relay and has a minimum solution of at least five moves to solve the scramble."
+    },
+    "verdict": {
+      "accepted": true,
+      "lights": 6962,
+      "par": 6,
+      "par_without_relay": -1
+    }
+  }
+]
