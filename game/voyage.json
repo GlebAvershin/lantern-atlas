@@ -1,0 +1,99 @@
+[
+  {
+    "name": "The Harbour",
+    "width": 3,
+    "relay": [],
+    "shutters": [],
+    "lights": 325,
+    "par": 1,
+    "note": "Light every lantern. A tap switches its four neighbours too."
+  },
+  {
+    "name": "Twin Beacons",
+    "width": 3,
+    "relay": [],
+    "shutters": [],
+    "lights": 84,
+    "par": 2,
+    "note": "Two shores share the same tide. Overlapping pulses cancel."
+  },
+  {
+    "name": "Sounding Line",
+    "width": 3,
+    "relay": [
+      0,
+      8
+    ],
+    "shutters": [],
+    "lights": 378,
+    "par": 3,
+    "note": "The two diamond relays send one extra pulse to each other."
+  },
+  {
+    "name": "Salt Gate",
+    "width": 3,
+    "relay": [
+      2,
+      6
+    ],
+    "shutters": [
+      4
+    ],
+    "lights": 432,
+    "par": 4,
+    "note": "The barred station receives light. Switch it from a neighbour."
+  },
+  {
+    "name": "Open Water",
+    "width": 4,
+    "relay": [],
+    "shutters": [],
+    "lights": 14364,
+    "par": 4,
+    "note": "A wider chart, the same tide. Hover to trace the next pulse."
+  },
+  {
+    "name": "The Narrows",
+    "width": 4,
+    "relay": [
+      3,
+      12
+    ],
+    "shutters": [
+      5
+    ],
+    "lights": 33540,
+    "par": 5,
+    "note": "Send light across the strait while the central gate is barred."
+  },
+  {
+    "name": "Northwatch",
+    "width": 4,
+    "relay": [
+      0,
+      15
+    ],
+    "shutters": [
+      6,
+      9
+    ],
+    "lights": 55104,
+    "par": 6,
+    "note": "Two gates guard the crossing. Watch where the relay pulse lands."
+  },
+  {
+    "name": "Crescent Passage",
+    "width": 4,
+    "relay": [
+      1,
+      14
+    ],
+    "shutters": [
+      5,
+      10
+    ],
+    "lights": 6962,
+    "par": 6,
+    "note": "Guide the last signal through the crescent and bring the fleet home."
+  }
+]
