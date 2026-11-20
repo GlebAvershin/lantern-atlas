@@ -1,0 +1,9 @@
+{
+  "query_sha256": "f11049915538defa39f4bfccd89eb50fae25717750f59c2f1658de3359eadf64",
+  "query_id": "01f1e51d-888f-11d9-b754-2aca0e7ac45e",
+  "status": "FINISHED",
+  "duration": 450,
+  "rows_produced": 3,
+  "query_start_time_ms": 1795205043314,
+  "query_end_time_ms": 1795205043764
+}

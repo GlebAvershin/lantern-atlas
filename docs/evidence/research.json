@@ -1,0 +1,95 @@
+{
+  "game": "Lantern Atlas",
+  "revision": "30c5e022c2720ffb44fc07f6f06e7bbc425e38de",
+  "source_sha256": {
+    "docs/evidence/mixed-recovery.json": "bb8a37dccfb8e76dcb95cdb1ed0e66b7a6ad65c08809b7f96073d45076bad32e",
+    "studio/research/study.py": "32c33fca509d363c4296e28cc6aa9c9816c79f6f9c955f0dc2a0c31c3194ce6a",
+    "studio/research/metrics.sql": "1db0b64978b95007085674d88b8baf178d9406b18f4db46b6ebced6cc8632802"
+  },
+  "query_sha256": "f11049915538defa39f4bfccd89eb50fae25717750f59c2f1658de3359eadf64",
+  "input_rows": 9,
+  "cases": [
+    {
+      "scenario": "both_fresh_failed",
+      "metrics": {
+        "fresh_primary": 502,
+        "fresh_alternate": 502,
+        "cached_primary": 200
+      },
+      "rule": "pause_generation",
+      "model_answer": "pause_generation\n\nBoth fresh probes failed (502 status codes), so according to the rules, we should pause generation when both fresh probes fail.",
+      "agreement": false,
+      "tokens": 139,
+      "receipts": [
+        {
+          "service": "amplitude",
+          "phase": "ingestion_acknowledged",
+          "http_status": 200,
+          "event_id": "4e31042491a05074aec79002b24367b1",
+          "timestamp_utc": "2026-11-20T20:04:27.930446+00:00"
+        },
+        {
+          "service": "sentry",
+          "phase": "ingestion_acknowledged",
+          "http_status": 200,
+          "event_id": "408550b7463a5960a124c7e245701c6e",
+          "timestamp_utc": "2026-11-20T20:04:29.009934+00:00"
+        }
+      ]
+    },
+    {
+      "scenario": "primary_restored_replay",
+      "metrics": {
+        "fresh_primary": 200,
+        "fresh_alternate": 200,
+        "cached_primary": 200
+      },
+      "rule": "use_primary",
+      "model_answer": "use_primary",
+      "agreement": true,
+      "tokens": 111,
+      "receipts": [
+        {
+          "service": "amplitude",
+          "phase": "ingestion_acknowledged",
+          "http_status": 200,
+          "event_id": "19751d40c1085e29a4fe9c0493c2c8fe",
+          "timestamp_utc": "2026-11-20T20:04:30.334075+00:00"
+        }
+      ]
+    },
+    {
+      "scenario": "recorded_outage",
+      "metrics": {
+        "fresh_primary": 502,
+        "fresh_alternate": 200,
+        "cached_primary": 200
+      },
+      "rule": "use_alternate",
+      "model_answer": "use_alternate\n\nThe fresh probe for the primary failed with status 502, but the fresh probe for the alternate succeeded with status 200. Since we should choose use_alternate if its fresh probe succeeds, that's our answer.",
+      "agreement": false,
+      "tokens": 160,
+      "receipts": [
+        {
+          "service": "amplitude",
+          "phase": "ingestion_acknowledged",
+          "http_status": 200,
+          "event_id": "aeb63b67f03c52eaba049b1b8d7812cb",
+          "timestamp_utc": "2026-11-20T20:04:31.478236+00:00"
+        },
+        {
+          "service": "sentry",
+          "phase": "ingestion_acknowledged",
+          "http_status": 200,
+          "event_id": "349573a36afa588fb0dcf2fe822e098f",
+          "timestamp_utc": "2026-11-20T20:04:31.805809+00:00"
+        }
+      ]
+    }
+  ],
+  "databricks": "SQL Statement Execution / SQLite parity",
+  "aws_plan": "FREE / ACTIVE",
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "region": "eu-north-1",
+  "utc": "2026-11-20T20:04:23.835834+00:00"
+}

@@ -65,11 +65,13 @@ async def recheck(game):
     }
 
 
-def submit(client, service, context, event_id, timestamp, region):
+def submit(client, service, context, event_id, timestamp, region, *,
+           event_type="game.review_accepted", warning="HUD verifier rejected the rotated negative control",
+           group="portfolio-hud-negative-control"):
     if service == "amplitude":
         host = {"us": "api2.amplitude.com", "eu": "api.eu.amplitude.com"}[region]
         event = {
-            "event_type": "game.review_accepted",
+            "event_type": event_type,
             "device_id": "portfolio-hud-qa",
             "insert_id": event_id,
             "time": int(timestamp.timestamp() * 1000),
@@ -100,11 +102,11 @@ def submit(client, service, context, event_id, timestamp, region):
             "timestamp": timestamp.isoformat(),
             "platform": "python",
             "level": "warning",
-            "message": "HUD verifier rejected the rotated negative control",
+            "message": warning,
             "environment": "portfolio-qa",
             "release": context["revision"],
             "tags": {"game": context["game"], "source": "developer_qa"},
-            "fingerprint": ["portfolio-hud-negative-control", context["game"]],
+            "fingerprint": [group, context["game"]],
             "extra": context,
         }
         envelope = "\n".join(

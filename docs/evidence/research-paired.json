@@ -1,0 +1,52 @@
+{
+  "model": "qwen.qwen3-coder-30b-a3b-instruct",
+  "baseline_sha256": "e3a290c8e8dd10b90f4c90926eab3a76f0d790f3a525f3551ce916f45e2f6da8",
+  "features_sha256": "a7c1e62647187a0c7535e603dc27baeebe6a443f0e71d73097a7880f1b81936f",
+  "cases": [
+    {
+      "scenario": "both_fresh_failed",
+      "facts": {
+        "fresh_primary_succeeded": false,
+        "fresh_alternate_succeeded": false,
+        "cached_read_succeeded": true
+      },
+      "rule": "pause_generation",
+      "model_answer": "pause_generation",
+      "strict_before": false,
+      "strict_after": true,
+      "first_line_before": true,
+      "first_line_after": true,
+      "tokens": 115
+    },
+    {
+      "scenario": "primary_restored_replay",
+      "facts": {
+        "fresh_primary_succeeded": true,
+        "fresh_alternate_succeeded": true,
+        "cached_read_succeeded": true
+      },
+      "rule": "use_primary",
+      "model_answer": "use_primary",
+      "strict_before": true,
+      "strict_after": true,
+      "first_line_before": true,
+      "first_line_after": true,
+      "tokens": 115
+    },
+    {
+      "scenario": "recorded_outage",
+      "facts": {
+        "fresh_primary_succeeded": false,
+        "fresh_alternate_succeeded": true,
+        "cached_read_succeeded": true
+      },
+      "rule": "use_alternate",
+      "model_answer": "use_alternate",
+      "strict_before": false,
+      "strict_after": true,
+      "first_line_before": true,
+      "first_line_after": true,
+      "tokens": 116
+    }
+  ]
+}
