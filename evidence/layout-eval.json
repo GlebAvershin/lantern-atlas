@@ -1,0 +1,964 @@
+{
+  "environment": "local loopback, single gateway worker, llama.cpp, 2 slots per model",
+  "fixed_order_baseline_exact": 3,
+  "models": {
+    "qwen": {
+      "exact": 1,
+      "n": 6,
+      "accepted": 6,
+      "p95_ms": 312.55
+    },
+    "smol": {
+      "exact": 0,
+      "n": 6,
+      "accepted": 4,
+      "p95_ms": 330.4
+    }
+  },
+  "trials": [
+    {
+      "route": "qwen",
+      "project": "atlas",
+      "status": 200,
+      "rows": [
+        "logbook",
+        "sky",
+        "controls"
+      ],
+      "cache": "miss",
+      "inference_tokens": 126,
+      "model": "qwen",
+      "latency_ms": 290.0,
+      "client_ms": 312.55,
+      "wireframe": "Chart title (logbook)\nInteractive star map (sky)\nUndo and advance (controls)",
+      "expected": [
+        "logbook",
+        "sky",
+        "controls"
+      ],
+      "exact": true
+    },
+    {
+      "route": "qwen",
+      "project": "atlas",
+      "status": 200,
+      "rows": [
+        "controls",
+        "logbook",
+        "sky"
+      ],
+      "cache": "miss",
+      "inference_tokens": 125,
+      "model": "qwen",
+      "latency_ms": 214.4,
+      "client_ms": 216.0,
+      "wireframe": "Star map first\nUnder it, show the chart name\nPut undo at the bottom",
+      "expected": [
+        "sky",
+        "logbook",
+        "controls"
+      ],
+      "exact": false
+    },
+    {
+      "route": "qwen",
+      "project": "freight",
+      "status": 200,
+      "rows": [
+        "cargo",
+        "bearing",
+        "shift"
+      ],
+      "cache": "miss",
+      "inference_tokens": 129,
+      "model": "qwen",
+      "latency_ms": 305.8,
+      "client_ms": 307.07,
+      "wireframe": "Shift name at top\nDirection to the airlock in the middle\nBattery progress at the bottom",
+      "expected": [
+        "shift",
+        "bearing",
+        "cargo"
+      ],
+      "exact": false
+    },
+    {
+      "route": "qwen",
+      "project": "freight",
+      "status": 200,
+      "rows": [
+        "cargo",
+        "bearing",
+        "shift"
+      ],
+      "cache": "miss",
+      "inference_tokens": 122,
+      "model": "qwen",
+      "latency_ms": 206.1,
+      "client_ms": 207.28,
+      "wireframe": "Battery count first\nNext show the shift name\nLast show which way to walk",
+      "expected": [
+        "cargo",
+        "shift",
+        "bearing"
+      ],
+      "exact": false
+    },
+    {
+      "route": "qwen",
+      "project": "soccer",
+      "status": 200,
+      "rows": [
+        "transfer",
+        "crest",
+        "terms"
+      ],
+      "cache": "miss",
+      "inference_tokens": 114,
+      "model": "qwen",
+      "latency_ms": 191.8,
+      "client_ms": 192.87,
+      "wireframe": "Club illustration\nClub name and price\nBuy or pass",
+      "expected": [
+        "crest",
+        "terms",
+        "transfer"
+      ],
+      "exact": false
+    },
+    {
+      "route": "qwen",
+      "project": "soccer",
+      "status": 200,
+      "rows": [
+        "transfer",
+        "terms",
+        "crest"
+      ],
+      "cache": "miss",
+      "inference_tokens": 125,
+      "model": "qwen",
+      "latency_ms": 209.4,
+      "client_ms": 210.66,
+      "wireframe": "Price and terms across the top\nBuy and pass below that\nClub artwork at the bottom",
+      "expected": [
+        "terms",
+        "transfer",
+        "crest"
+      ],
+      "exact": false
+    },
+    {
+      "route": "smol",
+      "project": "atlas",
+      "status": 200,
+      "rows": [
+        "controls",
+        "sky",
+        "logbook"
+      ],
+      "cache": "miss",
+      "inference_tokens": 141,
+      "model": "smol",
+      "latency_ms": 329.2,
+      "client_ms": 330.4,
+      "wireframe": "Chart title (logbook)\nInteractive star map (sky)\nUndo and advance (controls)",
+      "expected": [
+        "logbook",
+        "sky",
+        "controls"
+      ],
+      "exact": false
+    },
+    {
+      "route": "smol",
+      "project": "atlas",
+      "status": 200,
+      "rows": [
+        "controls",
+        "logbook",
+        "sky"
+      ],
+      "cache": "miss",
+      "inference_tokens": 135,
+      "model": "smol",
+      "latency_ms": 189.5,
+      "client_ms": 190.48,
+      "wireframe": "Star map first\nUnder it, show the chart name\nPut undo at the bottom",
+      "expected": [
+        "sky",
+        "logbook",
+        "controls"
+      ],
+      "exact": false
+    },
+    {
+      "route": "smol",
+      "project": "freight",
+      "status": 422,
+      "detail": "Model draft failed the component contract",
+      "client_ms": 254.87,
+      "wireframe": "Shift name at top\nDirection to the airlock in the middle\nBattery progress at the bottom",
+      "expected": [
+        "shift",
+        "bearing",
+        "cargo"
+      ],
+      "exact": false
+    },
+    {
+      "route": "smol",
+      "project": "freight",
+      "status": 422,
+      "detail": "Model draft failed the component contract",
+      "client_ms": 272.68,
+      "wireframe": "Battery count first\nNext show the shift name\nLast show which way to walk",
+      "expected": [
+        "cargo",
+        "shift",
+        "bearing"
+      ],
+      "exact": false
+    },
+    {
+      "route": "smol",
+      "project": "soccer",
+      "status": 200,
+      "rows": [
+        "transfer",
+        "crest",
+        "terms"
+      ],
+      "cache": "miss",
+      "inference_tokens": 125,
+      "model": "smol",
+      "latency_ms": 234.5,
+      "client_ms": 235.81,
+      "wireframe": "Club illustration\nClub name and price\nBuy or pass",
+      "expected": [
+        "crest",
+        "terms",
+        "transfer"
+      ],
+      "exact": false
+    },
+    {
+      "route": "smol",
+      "project": "soccer",
+      "status": 200,
+      "rows": [
+        "transfer",
+        "crest",
+        "terms"
+      ],
+      "cache": "miss",
+      "inference_tokens": 131,
+      "model": "smol",
+      "latency_ms": 187.5,
+      "client_ms": 188.82,
+      "wireframe": "Price and terms across the top\nBuy and pass below that\nClub artwork at the bottom",
+      "expected": [
+        "terms",
+        "transfer",
+        "crest"
+      ],
+      "exact": false
+    }
+  ],
+  "unauthenticated_status": 401,
+  "burst": {
+    "n": 24,
+    "cache": {
+      "miss": 3,
+      "joined": 21
+    },
+    "http_ok": 24,
+    "p95_ms": 676.32,
+    "tokens": 341,
+    "responses": [
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "miss",
+        "inference_tokens": 118,
+        "model": "qwen",
+        "latency_ms": 493.9,
+        "client_ms": 499.65
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 490.3,
+        "client_ms": 498.87
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 489.5,
+        "client_ms": 499.43
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 489.2,
+        "client_ms": 499.33
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 488.7,
+        "client_ms": 499.23
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 488.3,
+        "client_ms": 498.66
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 488.3,
+        "client_ms": 498.61
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 488.0,
+        "client_ms": 498.63
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "miss",
+        "inference_tokens": 115,
+        "model": "qwen",
+        "latency_ms": 488.3,
+        "client_ms": 499.85
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 487.1,
+        "client_ms": 499.89
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 487.0,
+        "client_ms": 499.93
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 486.7,
+        "client_ms": 499.98
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 486.7,
+        "client_ms": 500.0
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 486.6,
+        "client_ms": 500.05
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 486.4,
+        "client_ms": 500.12
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 486.3,
+        "client_ms": 500.19
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "miss",
+        "inference_tokens": 108,
+        "model": "qwen",
+        "latency_ms": 662.7,
+        "client_ms": 674.47
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 662.5,
+        "client_ms": 675.28
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 662.3,
+        "client_ms": 675.43
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 662.2,
+        "client_ms": 675.57
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 662.2,
+        "client_ms": 675.72
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 662.2,
+        "client_ms": 675.89
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 662.2,
+        "client_ms": 676.32
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 662.1,
+        "client_ms": 676.42
+      }
+    ]
+  },
+  "repeat": {
+    "n": 24,
+    "cache": {
+      "hit": 24
+    },
+    "http_ok": 24,
+    "p95_ms": 42.56,
+    "tokens": 0,
+    "responses": [
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 13.75
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 14.08
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 44.03
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 22.2
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 15.67
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 40.7
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 25.79
+      },
+      {
+        "project": "atlas",
+        "status": 200,
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 17.14
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 21.43
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 42.44
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 28.88
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 21.9
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 42.56
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 36.61
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 22.73
+      },
+      {
+        "project": "freight",
+        "status": 200,
+        "rows": [
+          "shift",
+          "bearing",
+          "cargo"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 41.21
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 23.9
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 27.87
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 27.19
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 38.56
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 35.36
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 27.73
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 30.97
+      },
+      {
+        "project": "soccer",
+        "status": 200,
+        "rows": [
+          "crest",
+          "terms",
+          "transfer"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 29.02
+      }
+    ]
+  }
+}

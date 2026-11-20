@@ -1,0 +1,18 @@
+config_version=5
+
+[application]
+config/name="Lantern Atlas"
+run/main_scene="res://atlas.tscn"
+config/features=PackedStringArray("4.5", "GL Compatibility")
+
+[display]
+window/size/viewport_width=420
+window/size/viewport_height=700
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+window/handheld/orientation=1
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.035,0.082,0.13,1)
+textures/vram_compression/import_etc2_astc=true

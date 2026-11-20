@@ -1,0 +1,235 @@
+{
+  "model": "onnx-community/embeddinggemma-300m-ONNX, quantized, CPU",
+  "exact": 12,
+  "n": 12,
+  "trials": [
+    {
+      "group": "original",
+      "project": "atlas",
+      "wireframe": "Chart title (logbook)\nInteractive star map (sky)\nUndo and advance (controls)",
+      "rows": [
+        "logbook",
+        "sky",
+        "controls"
+      ],
+      "margin_over_second": 1.0308,
+      "expected": [
+        "logbook",
+        "sky",
+        "controls"
+      ],
+      "exact": true,
+      "fixed_order_exact": true,
+      "ms": 1442.89
+    },
+    {
+      "group": "original",
+      "project": "atlas",
+      "wireframe": "Star map first\nUnder it, show the chart name\nPut undo at the bottom",
+      "rows": [
+        "sky",
+        "logbook",
+        "controls"
+      ],
+      "margin_over_second": 0.5335,
+      "expected": [
+        "sky",
+        "logbook",
+        "controls"
+      ],
+      "exact": true,
+      "fixed_order_exact": false,
+      "ms": 144.06
+    },
+    {
+      "group": "original",
+      "project": "freight",
+      "wireframe": "Shift name at top\nDirection to the airlock in the middle\nBattery progress at the bottom",
+      "rows": [
+        "shift",
+        "bearing",
+        "cargo"
+      ],
+      "margin_over_second": 0.5951,
+      "expected": [
+        "shift",
+        "bearing",
+        "cargo"
+      ],
+      "exact": true,
+      "fixed_order_exact": true,
+      "ms": 310.18
+    },
+    {
+      "group": "original",
+      "project": "freight",
+      "wireframe": "Battery count first\nNext show the shift name\nLast show which way to walk",
+      "rows": [
+        "cargo",
+        "shift",
+        "bearing"
+      ],
+      "margin_over_second": 0.3304,
+      "expected": [
+        "cargo",
+        "shift",
+        "bearing"
+      ],
+      "exact": true,
+      "fixed_order_exact": false,
+      "ms": 139.58
+    },
+    {
+      "group": "original",
+      "project": "soccer",
+      "wireframe": "Club illustration\nClub name and price\nBuy or pass",
+      "rows": [
+        "crest",
+        "terms",
+        "transfer"
+      ],
+      "margin_over_second": 0.4813,
+      "expected": [
+        "crest",
+        "terms",
+        "transfer"
+      ],
+      "exact": true,
+      "fixed_order_exact": true,
+      "ms": 288.44
+    },
+    {
+      "group": "original",
+      "project": "soccer",
+      "wireframe": "Price and terms across the top\nBuy and pass below that\nClub artwork at the bottom",
+      "rows": [
+        "terms",
+        "transfer",
+        "crest"
+      ],
+      "margin_over_second": 0.4472,
+      "expected": [
+        "terms",
+        "transfer",
+        "crest"
+      ],
+      "exact": true,
+      "fixed_order_exact": false,
+      "ms": 139.83
+    },
+    {
+      "group": "paraphrases",
+      "project": "atlas",
+      "wireframe": "Undo button and next chapter action\nTap stars on a celestial grid\nTitle of the current chart",
+      "rows": [
+        "controls",
+        "sky",
+        "logbook"
+      ],
+      "margin_over_second": 0.5276,
+      "expected": [
+        "controls",
+        "sky",
+        "logbook"
+      ],
+      "exact": true,
+      "fixed_order_exact": false,
+      "ms": 141.43
+    },
+    {
+      "group": "paraphrases",
+      "project": "freight",
+      "wireframe": "Which direction is my destination?\nBattery delivery count\nName of the active shift",
+      "rows": [
+        "bearing",
+        "cargo",
+        "shift"
+      ],
+      "margin_over_second": 0.5032,
+      "expected": [
+        "bearing",
+        "cargo",
+        "shift"
+      ],
+      "exact": true,
+      "fixed_order_exact": false,
+      "ms": 136.35
+    },
+    {
+      "group": "paraphrases",
+      "project": "soccer",
+      "wireframe": "Accept or decline the purchase\nPicture of the club emblem\nTransfer price and club name",
+      "rows": [
+        "transfer",
+        "crest",
+        "terms"
+      ],
+      "margin_over_second": 0.3489,
+      "expected": [
+        "transfer",
+        "crest",
+        "terms"
+      ],
+      "exact": true,
+      "fixed_order_exact": false,
+      "ms": 140.42
+    },
+    {
+      "group": "additional",
+      "project": "atlas",
+      "wireframe": "Start with the command to take back a move\nShow the chapter heading next\nFinish with the constellation you can touch",
+      "rows": [
+        "controls",
+        "logbook",
+        "sky"
+      ],
+      "margin_over_second": 0.31,
+      "expected": [
+        "controls",
+        "logbook",
+        "sky"
+      ],
+      "exact": true,
+      "fixed_order_exact": false,
+      "ms": 141.7
+    },
+    {
+      "group": "additional",
+      "project": "freight",
+      "wireframe": "Lead with navigation to the depot exit\nHow many batteries are in?\nFinish with tonight's shift identifier",
+      "rows": [
+        "bearing",
+        "cargo",
+        "shift"
+      ],
+      "margin_over_second": 0.3168,
+      "expected": [
+        "bearing",
+        "cargo",
+        "shift"
+      ],
+      "exact": true,
+      "fixed_order_exact": false,
+      "ms": 141.51
+    },
+    {
+      "group": "additional",
+      "project": "soccer",
+      "wireframe": "Display the club badge at the top\nLet me accept or decline\nAt the foot, list the asking price",
+      "rows": [
+        "crest",
+        "transfer",
+        "terms"
+      ],
+      "margin_over_second": 0.1523,
+      "expected": [
+        "crest",
+        "transfer",
+        "terms"
+      ],
+      "exact": true,
+      "fixed_order_exact": false,
+      "ms": 152.56
+    }
+  ]
+}

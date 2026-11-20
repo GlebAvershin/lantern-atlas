@@ -1,0 +1,6 @@
+.godot/
+.venv/
+__pycache__/
+*.app/
+*.zip
+.DS_Store
