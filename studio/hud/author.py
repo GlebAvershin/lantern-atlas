@@ -12,14 +12,15 @@ from mcp.client.stdio import stdio_client
 
 from contract import SLOTS, digest, load
 from render import compile_page
-from routes import complete
+from routes import complete, gateway_policy
 
 
-async def author(root, out, route, model):
+async def author(root, out, route, model, inspect_gateway=False):
     root = root.resolve()
     design = load(root)
     params = StdioServerParameters(command=sys.executable, args=[str(Path(__file__).with_name("contract.py"))],
                                    env={"HUD_WORKSPACE": str(root)})
+    policy = await asyncio.to_thread(gateway_policy, model) if inspect_gateway else None
     binding, trace = {}, []
     async with stdio_client(params) as (reader, writer), ClientSession(reader, writer) as mcp:
         await mcp.initialize()
@@ -65,6 +66,8 @@ async def author(root, out, route, model):
               "brief_sha256": digest(brief), "bindings": binding, "negative_control": control,
               "rejected_control_regions": rejected, "trace": trace, "model_calls": sum(t["origin"]=="inference" for t in trace),
               "inference_tokens": sum(t["tokens"] for t in trace), "authoring_ms": elapsed}
+    if inspect_gateway:
+        report["databricks_ai_gateway"] = policy
     (out/"authoring.json").write_text(json.dumps(report, indent=2) + "\n")
 
 
@@ -74,5 +77,8 @@ if __name__ == "__main__":
     parser.add_argument("out", type=Path)
     parser.add_argument("--route", choices=("llama","bedrock","databricks"), default="llama")
     parser.add_argument("--model", required=True)
+    parser.add_argument("--inspect-gateway",action="store_true",help="Read and record the Databricks AI Gateway configuration")
     args = parser.parse_args()
-    asyncio.run(author(args.root, args.out, args.route, args.model))
+    if args.inspect_gateway and args.route != "databricks":
+        parser.error("--inspect-gateway requires the Databricks route")
+    asyncio.run(author(args.root, args.out, args.route, args.model,args.inspect_gateway))

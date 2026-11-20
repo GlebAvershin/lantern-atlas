@@ -8,7 +8,7 @@ import boto3
 from botocore.stub import ANY, Stubber
 import httpx
 
-from routes import complete
+from routes import complete, gateway_policy
 
 
 class Routes(unittest.TestCase):
@@ -41,6 +41,19 @@ class Routes(unittest.TestCase):
                                       transport=httpx.MockTransport(serve)), ("board",18))
             with self.assertRaises(ValueError):
                 complete("databricks","studio-review","Arrange the board",["clock"],transport=httpx.MockTransport(serve))
+
+    def test_gateway_policy(self):
+        def serve(request):
+            self.assertEqual(request.method,"GET")
+            self.assertEqual(request.url.path,"/api/2.0/serving-endpoints/workshop")
+            self.assertEqual(request.headers["Authorization"],"Bearer fixture")
+            return httpx.Response(200,json={"ai_gateway":{"usage_tracking_config":{"enabled":True},
+                "inference_table_config":{"enabled":False,"catalog_name":"internal"},
+                "rate_limits":[{"key":"user_group","principal":"private","calls":12,"renewal_period":"minute"}]}})
+        with patch.dict(os.environ,DATABRICKS_HOST="https://studio.cloud.databricks.com",DATABRICKS_TOKEN="fixture"):
+            policy=gateway_policy("workshop",transport=httpx.MockTransport(serve))
+        self.assertEqual(policy,{"configuration_returned":True,"usage_tracking":True,"payload_logging":False,
+                       "rate_limits":[{"key":"user_group","calls":12,"renewal_period":"minute"}]})
 
     def test_foreign_workspace_origin(self):
         with patch.dict(os.environ,DATABRICKS_HOST="https://example.org"):

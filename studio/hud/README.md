@@ -50,3 +50,11 @@ The alternative author uses the existing quantized CPU EmbeddingGemma matcher. I
 uv run --script studio/hud/match.py "$GAME" /tmp/matcher.json \
   --snapshot "$EMBEDDING_SNAPSHOT" --screen /tmp/matched-screen.html
 ```
+
+## Account models and a shared cloud worker
+
+The account runner reads the game's MCP brief and asks Google Antigravity CLI for one complete assignment. Its session disables additional credits. The independent verifier checks all three bindings. If exactly one permutation survives, the runner records an elimination with zero additional model calls. A second inference is available when multiple assignments remain. Run `python studio/hud/account.py "$GAME" /tmp/account.json --model claude-sonnet-4-6` in the configured Python environment after signing in locally. [Account runner](account.py)
+
+The Four-game Kimi layout benchmark checks out all four game catalogues and starts one two-slot llama.cpp worker on an Ubuntu runner. It uses the text route of Kimi-VL-A3B-Instruct. Each client submits its two blind briefs and then completes an MCP-verified handoff. The workflow records the Q3_K_S weights checksum and the exact game revisions. [Workflow](../../.github/workflows/kimi-layout.yml) · [Worker](kimi-ci.sh)
+
+For a configured Databricks serving endpoint, add `--inspect-gateway` to the Databricks route to record usage tracking, payload logging and rate limits via the AI Gateway configuration returned by the serving endpoint API. The contract test validates the GET request and the omission of principal names and inference-table locations. [Endpoint API](https://docs.databricks.com/api/model-serving/v1/serving-endpoint)
