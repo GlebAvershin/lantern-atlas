@@ -8,6 +8,10 @@ Lantern Atlas — головоломка на Godot 4.5.1 о передаче с
 
 Расчёт выполнил инструмент `aws___run_script` управляемого MCP-сервера AWS через Agent Toolkit for AWS в Codex. На момент запуска действовал план AWS Free. Сервис вернул успешный результат с нулём обращений к API ресурсов. [Результат и контрольные суммы](evidence/aws-toolkit.json) · [Расчёт и проверка](../studio/research/aws_audit.py) · [Как повторить](https://github.com/GlebAvershin/lantern-atlas/blob/main/studio/research/README.md#aws-agent-toolkit-replay)
 
+## Сверка результатов через облачные MCP-серверы
+
+Через Amplitude MCP посчитали события `game.study_evaluated` с фильтром по игре за 20 ноября 2026 года (UTC). Получено 10 событий исследовательских прогонов, включая повторные запуски. В Sentry MCP по идентификатору события из протокола нашли **PYTHON-J** и сверили сценарий `both_down_cold` и решение `pause_generation`. Затем Codex выполнил SQL исследования через Databricks MCP (`system.ai.dbsql`). Все строки результата (7) по значениям совпали с локальным SQLite. [Параметры запроса, событие и результаты SQL](evidence/service-mcp.json) · [SQL исследования](../studio/research/metrics.sql)
+
 ## Проверка воспроизводимости
 
 Godot прошёл восемь карт и перебрал 512 состояний гавани. Независимый решатель C++ подтвердил минимальную длину решения каждой карты: от одного до шести ходов.

@@ -1,0 +1,98 @@
+{
+  "game": "Lantern Atlas",
+  "client": "Codex app-server",
+  "amplitude": {
+    "tool": "query_amplitude_data",
+    "chart": {
+      "kind": "segmentation",
+      "events": [
+        {
+          "event": "game.study_evaluated",
+          "where": [
+            {
+              "property": "game",
+              "op": "is",
+              "values": [
+                "Lantern Atlas"
+              ],
+              "scope": "event"
+            }
+          ]
+        }
+      ],
+      "measured_as": {
+        "as": "event_totals"
+      },
+      "date_range": {
+        "start": 1795132800,
+        "end": 1795219199,
+        "timezone": "UTC"
+      }
+    },
+    "event_total": 10,
+    "request_id": "req_1795211860061_fzrc7k85q"
+  },
+  "sentry": {
+    "tool": "get_issue_details",
+    "event_id": "6cd6a2ca445158fc93edad36db80a9f2",
+    "issue": "PYTHON-J",
+    "title": "Lantern Atlas research check: both_down_cold / pause_generation",
+    "matches_research_receipt": true
+  },
+  "databricks": {
+    "service": "system.ai.dbsql",
+    "tool": "execute_sql",
+    "statement_id": "01f1e52d-bf95-1ae4-8416-bb16e4a0bcdc",
+    "columns": [
+      "scenario",
+      "status",
+      "cache_hit",
+      "alternate"
+    ],
+    "rows": [
+      [
+        "alternate_warm_other_replica",
+        "200",
+        "1",
+        "1"
+      ],
+      [
+        "both_down_cold",
+        "503",
+        "0",
+        "0"
+      ],
+      [
+        "both_down_warm",
+        "200",
+        "1",
+        "0"
+      ],
+      [
+        "inflight_fallback",
+        "200",
+        "0",
+        "1"
+      ],
+      [
+        "pinned_primary_down",
+        "502",
+        "0",
+        "0"
+      ],
+      [
+        "primary_restored",
+        "200",
+        "0",
+        "0"
+      ],
+      [
+        "restored_warm_other_replica",
+        "200",
+        "1",
+        "0"
+      ]
+    ],
+    "sqlite_match": true
+  }
+}
