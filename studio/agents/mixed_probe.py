@@ -25,23 +25,26 @@ MODELS = ("qwen", "smol")
 async def probe(args):
     tokens = {team: key for key, team in json.loads(os.environ["STUDIO_TOKENS"]).items()}
     async with httpx.AsyncClient(timeout=100) as client:
-        async def call(team, model, choices, replica):
+        async def call(team, model, choices, replica, allow_fallback=True):
             start = time.perf_counter()
             r = await client.post(f"http://127.0.0.1:{18283 + replica}/review",
-                json={"model": model, "candidates": choices}, headers={"Authorization": "Bearer " + tokens[team]})
+                json={"model": model, "candidates": choices, "allow_fallback": allow_fallback}, headers={"Authorization": "Bearer " + tokens[team]})
             row = {"team": team, "model": model, "choices": choices, "replica": replica, "status": r.status_code,
                    "client_ms": round((time.perf_counter() - start) * 1000, 2)}
+            if r.status_code == 503:
+                row["retry_after"] = r.headers.get("Retry-After")
             if r.is_success:
                 body = r.json()
                 result = body["result"]
                 assert result["choice"] in choices and result["history"][-1]["verdict"]["accepted"]
-                row.update(cache=body["cache"], choice=result["choice"], worker=body["worker"],
+                row.update(served_model=body["model"], fallback=body["fallback"], cache=body["cache"], choice=result["choice"], worker=body["worker"],
                            tokens=body["inference_tokens"], attempts=len(result["history"]))
             return row
 
         if args.phase == "recover":
             retry = await call("design", "qwen", INTERRUPTED, 1)
             repeat = await call("design", "qwen", INTERRUPTED, 0)
+            assert retry["served_model"] == "qwen" and not retry["fallback"]
             assert retry.get("cache") == "miss" and repeat.get("cache") == "hit"
             return {"retry_same_request": retry, "repeat_other_replica": repeat}
 
@@ -59,13 +62,22 @@ async def probe(args):
                     await asyncio.sleep(.01)
             os.kill(args.runner_model_pid, signal.SIGKILL)
             failed = await pending
-            assert failed["status"] == 502
-            warm, unavailable, healthy = await asyncio.gather(
-                call("design", "qwen", BRIEFS[0], 1), call("qa", "qwen", INTERRUPTED, 1),
-                call("qa", "smol", INTERRUPTED, 0))
-            assert warm.get("cache") == "hit" and unavailable["status"] == 502 and healthy.get("cache") == "miss"
-            return {"busy_slot_confirmed": True, "interrupted": failed, "cached_during_outage": warm,
-                    "uncached_during_outage": unavailable, "other_model_during_outage": healthy}
+            assert failed["status"] == 200 and failed["served_model"] == "smol" and failed["fallback"]
+            assert failed["cache"] == "miss" and failed["tokens"] > 0
+            warm, pinned, reused = await asyncio.gather(
+                call("design", "qwen", BRIEFS[0], 1), call("qa", "qwen", INTERRUPTED, 1, False),
+                call("design", "qwen", INTERRUPTED, 1))
+            assert warm["cache"] == "hit" and not warm["fallback"] and pinned["status"] == 502
+            assert reused["served_model"] == "smol" and reused["cache"] == "hit" and reused["tokens"] == 0
+            return {"busy_slot_confirmed": True, "interrupted": failed, "warm_primary": warm,
+                    "pinned_primary": pinned, "cached_alternate": reused}
+
+        if args.phase == "both-down":
+            cold = await call("qa", "qwen", ["crescent_passage"], 1)
+            warm = await call("design", "qwen", BRIEFS[0], 0)
+            assert cold["status"] == 503 and cold["retry_after"] == "5"
+            assert warm["cache"] == "hit" and warm["tokens"] == 0
+            return {"fresh": cold, "cached": warm}
 
         bad = await call("design", "qwen", ["unknown"], 0)
         duplicate = await call("qa", "smol", ["coastal_route", "coastal_route"], 1)
@@ -95,7 +107,7 @@ async def probe(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("phase", choices=("load", "outage", "recover"))
+    parser.add_argument("phase", choices=("load", "outage", "both-down", "recover"))
     parser.add_argument("output", type=Path)
     parser.add_argument("--runner-model-pid", type=int)
     parser.add_argument("--qwen-url")

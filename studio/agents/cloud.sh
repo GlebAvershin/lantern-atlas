@@ -99,6 +99,9 @@ if [[ "$STUDIO_PROJECT" == atlas ]]; then
   "${probe[@]}" load "$out/mixed-load.json"
   "${probe[@]}" outage "$out/model-outage.json" --runner-model-pid "${pids[0]}" --qwen-url "http://$bridge:18181"
   wait "${pids[0]}" || true
+  kill "${pids[1]}"
+  wait "${pids[1]}" || true
+  "${probe[@]}" both-down "$out/both-down.json"
   "$binary" -m qwen.gguf --alias qwen --host "$bridge" --port 18181 -c 2048 -np 1 -t 2 >qwen-restarted.log 2>&1 &
   pids[0]=$!
   curl -fsS --retry 30 --retry-all-errors --retry-delay 1 "http://$bridge:18181/health"

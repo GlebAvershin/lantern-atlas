@@ -63,6 +63,7 @@ app = FastAPI(lifespan=lifespan)
 
 class Request(BaseModel):
     model: Literal["qwen", "smol"]
+    allow_fallback: bool = True
     candidates: list[str] | None = Field(default=None, min_length=1, max_length=4)
 
 
@@ -73,6 +74,10 @@ async def verify(choice):
     return result.structuredContent
 
 
+class ModelUnavailable(Exception):
+    """The inference transport failed before a usable response was received."""
+
+
 async def generate(model, brief):
     remaining = dict(brief["options"])
     history = []
@@ -81,11 +86,18 @@ async def generate(model, brief):
         schema = {"type": "object", "properties": {"choice": {"type": "string", "enum": list(remaining)}},
                   "required": ["choice"], "additionalProperties": False}
         context = json.dumps({**brief, "options": remaining, "previous_reviews": history}, sort_keys=True)
-        response = await app.state.client.post(os.environ[MODELS[model][0]] + "/v1/chat/completions",
-            json={"model": model, "temperature": 0, "seed": 42, "max_tokens": 48,
-                  "messages": [{"role": "system", "content": PROMPT}, {"role": "user", "content": context}],
-                  "response_format": {"type": "json_schema", "json_schema": {"name": "decision", "schema": schema}}})
-        response.raise_for_status()
+        try:
+            response = await app.state.client.post(os.environ[MODELS[model][0]] + "/v1/chat/completions",
+                json={"model": model, "temperature": 0, "seed": 42, "max_tokens": 48,
+                      "messages": [{"role": "system", "content": PROMPT}, {"role": "user", "content": context}],
+                      "response_format": {"type": "json_schema", "json_schema": {"name": "decision", "schema": schema}}})
+            response.raise_for_status()
+        except httpx.TransportError as error:
+            raise ModelUnavailable(model) from error
+        except httpx.HTTPStatusError as error:
+            if error.response.status_code in (408, 429) or error.response.status_code >= 500:
+                raise ModelUnavailable(model) from error
+            raise
         completion = response.json()
         tokens += completion["usage"]["total_tokens"]
         choice = json.loads(completion["choices"][0]["message"]["content"])["choice"]
@@ -138,9 +150,19 @@ async def review(request: Request, authorization: str = Header(default="")):
         brief = {**brief, "options": {key: value for key, value in options.items() if key in selected}}
     try:
         async with asyncio.timeout(90), app.state.slots:
-            result = await cached_review(team, request.model, brief)
+            model = request.model
+            try:
+                result = await cached_review(team, model, brief)
+            except ModelUnavailable:
+                if not request.allow_fallback:
+                    raise HTTPException(502, "Requested model unavailable")
+                model = "smol" if model == "qwen" else "qwen"
+                try:
+                    result = await cached_review(team, model, brief)
+                except ModelUnavailable as error:
+                    raise HTTPException(503, "Both model routes unavailable", headers={"Retry-After": "5"}) from error
     except TimeoutError as error:
         raise HTTPException(504, "Review deadline exceeded") from error
     except (httpx.HTTPError, ValueError, KeyError, IndexError, psycopg.Error) as error:
         raise HTTPException(502, "Review dependency failed") from error
-    return {**result, "model": request.model, "worker": os.environ["HOSTNAME"]}
+    return {**result, "model": model, "requested_model": request.model, "fallback": model != request.model, "worker": os.environ["HOSTNAME"]}
