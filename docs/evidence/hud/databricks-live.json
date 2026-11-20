@@ -1,0 +1,60 @@
+{
+  "project": "Lantern Atlas",
+  "screen": "Nightwatch",
+  "route": "databricks",
+  "requested_model": "databricks-qwen3-next-80b-a3b-instruct",
+  "game_revision": "45e41f73fd2a9fe5aa7a5604cb2d0cc957a69798",
+  "brief_sha256": "d37aff5f218ff70c4c439be4588decb322aaa3371add9492f1f009aabccc884a",
+  "bindings": {
+    "headline": "logbook",
+    "stage": "sky",
+    "action": "controls"
+  },
+  "negative_control": {
+    "headline": "sky",
+    "stage": "controls",
+    "action": "logbook"
+  },
+  "rejected_control_regions": [
+    "headline",
+    "stage",
+    "action"
+  ],
+  "trace": [
+    {
+      "region": "headline",
+      "component": "logbook",
+      "origin": "inference",
+      "tokens": 108,
+      "accepted": true
+    },
+    {
+      "region": "stage",
+      "component": "sky",
+      "origin": "inference",
+      "tokens": 93,
+      "accepted": true
+    },
+    {
+      "region": "action",
+      "component": "controls",
+      "origin": "elimination",
+      "tokens": 0,
+      "accepted": true
+    }
+  ],
+  "model_calls": 2,
+  "inference_tokens": 201,
+  "authoring_ms": 2445,
+  "edition": "Free Edition",
+  "endpoint_observation": {
+    "endpoint": "databricks-qwen3-next-80b-a3b-instruct",
+    "observed_utc": "2026-11-20T19:54:19.046850+00:00",
+    "ai_gateway": {
+      "configuration_returned": true,
+      "usage_tracking": true,
+      "payload_logging": false,
+      "rate_limits": []
+    }
+  }
+}

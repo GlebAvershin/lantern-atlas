@@ -58,3 +58,36 @@ The account runner reads the game's MCP brief and asks Google Antigravity CLI fo
 The Four-game Kimi layout benchmark checks out all four game catalogues and starts one two-slot llama.cpp worker on an Ubuntu runner. It uses the text route of Kimi-VL-A3B-Instruct. Each client submits its two blind briefs and then completes an MCP-verified handoff. The workflow records the Q3_K_S weights checksum and the exact game revisions. [Workflow](../../.github/workflows/kimi-layout.yml) · [Worker](kimi-ci.sh)
 
 For a configured Databricks serving endpoint, add `--inspect-gateway` to the Databricks route to record usage tracking, payload logging and rate limits via the AI Gateway configuration returned by the serving endpoint API. The contract test validates the GET request and the omission of principal names and inference-table locations. [Endpoint API](https://docs.databricks.com/api/model-serving/v1/serving-endpoint)
+
+## Hosted QA events
+
+Run the commands from the repository root in the same Python environment as the HUD author. Set GAME to a checkout containing a published HUD trace. The first command only replays the trace through the game's MCP verifier. The next two send one event each using the project's ingestion credentials in the environment.
+
+```sh
+python studio/hud/hosted_signals.py "$GAME" prepare
+SENTRY_DSN="$SENTRY_DSN" python studio/hud/hosted_signals.py "$GAME" sentry
+AMPLITUDE_API_KEY="$AMPLITUDE_API_KEY" python studio/hud/hosted_signals.py "$GAME" amplitude --region us
+```
+
+Select `--region eu` for an EU Amplitude project. The verifier checks the input digest, all three accepted bindings and all three deliberately rotated bindings before submitting. A Sentry fingerprint groups the controlled warning by game. Amplitude uses one synthetic QA device and tags the game and revision. A retry of the same revision and brief uses the same event identifier. The output records the provider acknowledgement after the API responds. [Example receipts](../../docs/evidence/hud/hosted.json)
+
+## Amazon Bedrock on the free account plan
+
+The four published runs used the regional Bedrock Mantle chat endpoint in Stockholm. The adapter signs HTTPS requests with SigV4 using the AWS SDK credential chain. The example assumes temporary SDK credentials are already available. Confirm that the account plan is both FREE and ACTIVE before running this free-plan example.
+
+```sh
+aws freetier get-account-plan-state --region us-east-1 --query '[accountPlanType,accountPlanStatus]'
+AWS_DEFAULT_REGION=eu-north-1 python studio/hud/author.py "$GAME" /tmp/hud-bedrock --route bedrock-mantle --model qwen.qwen3-coder-30b-a3b-instruct
+```
+
+The response supplies token usage. The author records the selected component, its MCP verdict and the elapsed time. The original Converse adapter remains available. The regional Converse endpoint returned `ValidationException: Operation not allowed` during this experiment. [Bedrock inference endpoints](https://docs.aws.amazon.com/bedrock/latest/userguide/models-get-info.html)
+
+## Databricks Free Edition
+
+The published HUD traces use Model Serving in Free Edition. Select a ready chat endpoint listed by your free workspace. The command reads the endpoint's AI Gateway configuration and includes the returned telemetry settings in the report. Supply the workspace origin as `DATABRICKS_HOST` and a temporary access token as `DATABRICKS_TOKEN` through your local credential manager or authenticated CLI.
+
+```sh
+python studio/hud/author.py "$GAME" /tmp/hud-databricks --route databricks --model databricks-qwen3-next-80b-a3b-instruct --inspect-gateway
+```
+
+A 429 response triggers up to three retries with backoff. A provider delay above one minute returns the error to the caller. The verifier rejects unknown component IDs. The last remaining component can be assigned by elimination and appears in the trace with zero inference tokens.

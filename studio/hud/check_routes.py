@@ -8,10 +8,15 @@ import boto3
 from botocore.stub import ANY, Stubber
 import httpx
 
-from routes import complete, gateway_policy
+from routes import complete, gateway_policy, parse_answer
 
 
 class Routes(unittest.TestCase):
+    def test_fenced_component(self):
+        self.assertEqual(parse_answer('```json\n{"component":"board"}\n```', ["board"]), "board")
+        with self.assertRaises(ValueError):
+            parse_answer('```json\n{"component":"missing"}\n```', ["board"])
+
     def test_converse(self):
         client = boto3.client("bedrock-runtime", region_name="us-east-1", aws_access_key_id="fixture",
                               aws_secret_access_key="fixture")
@@ -41,6 +46,17 @@ class Routes(unittest.TestCase):
                                       transport=httpx.MockTransport(serve)), ("board",18))
             with self.assertRaises(ValueError):
                 complete("databricks","studio-review","Arrange the board",["clock"],transport=httpx.MockTransport(serve))
+
+    def test_rate_limit_then_success(self):
+        results = iter([httpx.Response(429, headers={"Retry-After": "25"}),
+                        httpx.Response(200, json={"choices": [{"message": {"content": '{"component":"board"}'}}],
+                                                  "usage": {"total_tokens": 18}})])
+        with patch.dict(os.environ, DATABRICKS_HOST="https://studio.cloud.databricks.com", DATABRICKS_TOKEN="fixture"):
+            with patch("routes.time.sleep") as sleep:
+                value = complete("databricks", "review", "Choose a component", ["board"],
+                                 transport=httpx.MockTransport(lambda request: next(results)))
+        self.assertEqual(value, ("board", 18))
+        sleep.assert_called_once_with(25)
 
     def test_gateway_policy(self):
         def serve(request):

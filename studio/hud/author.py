@@ -75,7 +75,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("root", type=Path)
     parser.add_argument("out", type=Path)
-    parser.add_argument("--route", choices=("llama","bedrock","databricks"), default="llama")
+    parser.add_argument("--route", choices=("llama","bedrock","bedrock-mantle","databricks"), default="llama")
     parser.add_argument("--model", required=True)
     parser.add_argument("--inspect-gateway",action="store_true",help="Read and record the Databricks AI Gateway configuration")
     args = parser.parse_args()
