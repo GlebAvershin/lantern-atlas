@@ -1,0 +1,709 @@
+{
+  "run": "https://github.com/GlebAvershin/lantern-atlas/actions/runs/44771390084",
+  "head_sha": "4103603adde3dd325d511a2a2df66db834757f13",
+  "requests": {
+    "project": "atlas",
+    "unauthorized_status": 401,
+    "negative_control": {
+      "choice": "short_crossing",
+      "verdict": {
+        "accepted": false,
+        "lights": 47085,
+        "par": 2,
+        "par_without_relay": -1
+      }
+    },
+    "fresh": {
+      "cache": {
+        "miss": 2,
+        "hit": 6
+      },
+      "tokens": 758,
+      "model_calls": 2,
+      "p50_ms": 2314.855,
+      "p95_ms": 2411.6,
+      "responses": [
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "accepted": true,
+                  "lights": 6962,
+                  "par": 6,
+                  "par_without_relay": -1
+                }
+              }
+            ],
+            "tokens": 370
+          },
+          "cache": "miss",
+          "inference_tokens": 370,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-jpbg6",
+          "client_ms": 2405.81
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-ks6jc",
+          "client_ms": 2406.73
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-jpbg6",
+          "client_ms": 2220.95
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "accepted": true,
+                  "lights": 6962,
+                  "par": 6,
+                  "par_without_relay": -1
+                }
+              }
+            ],
+            "tokens": 388
+          },
+          "cache": "miss",
+          "inference_tokens": 388,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-ks6jc",
+          "client_ms": 2212.81
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-jpbg6",
+          "client_ms": 2411.6
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-ks6jc",
+          "client_ms": 2409.82
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-jpbg6",
+          "client_ms": 2223.9
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-ks6jc",
+          "client_ms": 2216.59
+        }
+      ]
+    },
+    "repeat": {
+      "cache": {
+        "hit": 8
+      },
+      "tokens": 0,
+      "model_calls": 0,
+      "p50_ms": 37.38,
+      "p95_ms": 46.99,
+      "responses": [
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-jpbg6",
+          "client_ms": 29.2
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-ks6jc",
+          "client_ms": 36.06
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-jpbg6",
+          "client_ms": 35.95
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-ks6jc",
+          "client_ms": 45.36
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-jpbg6",
+          "client_ms": 26.18
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-5d68c4557b-ks6jc",
+          "client_ms": 38.7
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-jpbg6",
+          "client_ms": 46.99
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-5d68c4557b-ks6jc",
+          "client_ms": 39.17
+        }
+      ]
+    },
+    "other_team": {
+      "result": {
+        "choice": "crescent_passage",
+        "history": [
+          {
+            "choice": "crescent_passage",
+            "verdict": {
+              "accepted": true,
+              "lights": 6962,
+              "par": 6,
+              "par_without_relay": -1
+            }
+          }
+        ],
+        "tokens": 370
+      },
+      "cache": "miss",
+      "inference_tokens": 370,
+      "model": "qwen",
+      "worker": "game-review-5d68c4557b-ks6jc",
+      "client_ms": 257.9
+    }
+  },
+  "restored": {
+    "project": "atlas",
+    "unauthorized_status": 401,
+    "negative_control": {
+      "choice": "short_crossing",
+      "verdict": {
+        "accepted": false,
+        "lights": 47085,
+        "par": 2,
+        "par_without_relay": -1
+      }
+    },
+    "restored": {
+      "cache": {
+        "hit": 8
+      },
+      "tokens": 0,
+      "model_calls": 0,
+      "p50_ms": 44.915000000000006,
+      "p95_ms": 49.61,
+      "responses": [
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-576bfd599-pfrs5",
+          "client_ms": 43.43
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-576bfd599-z7dgv",
+          "client_ms": 45.06
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-576bfd599-pfrs5",
+          "client_ms": 49.61
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-576bfd599-z7dgv",
+          "client_ms": 46.07
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-576bfd599-pfrs5",
+          "client_ms": 44.77
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 370,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "qwen",
+          "worker": "game-review-576bfd599-z7dgv",
+          "client_ms": 35.96
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-576bfd599-pfrs5",
+          "client_ms": 46.6
+        },
+        {
+          "result": {
+            "choice": "crescent_passage",
+            "tokens": 388,
+            "history": [
+              {
+                "choice": "crescent_passage",
+                "verdict": {
+                  "par": 6,
+                  "lights": 6962,
+                  "accepted": true,
+                  "par_without_relay": -1
+                }
+              }
+            ]
+          },
+          "cache": "hit",
+          "inference_tokens": 0,
+          "model": "smol",
+          "worker": "game-review-576bfd599-z7dgv",
+          "client_ms": 44.2
+        }
+      ]
+    },
+    "other_team": {
+      "result": {
+        "choice": "crescent_passage",
+        "tokens": 370,
+        "history": [
+          {
+            "choice": "crescent_passage",
+            "verdict": {
+              "par": 6,
+              "lights": 6962,
+              "accepted": true,
+              "par_without_relay": -1
+            }
+          }
+        ]
+      },
+      "cache": "hit",
+      "inference_tokens": 0,
+      "model": "qwen",
+      "worker": "game-review-576bfd599-z7dgv",
+      "client_ms": 10.1
+    }
+  },
+  "sdk": {
+    "destination": "local SDK receiver",
+    "sentry_envelopes": [
+      {
+        "message": "atlas: verifier rejected short_crossing",
+        "level": "info",
+        "release": "11ae31574c77fe769f58230fb993c53784523795"
+      }
+    ],
+    "amplitude_events": [
+      {
+        "event": "game.review_accepted",
+        "properties": {
+          "choice": "crescent_passage",
+          "model": "qwen",
+          "project": "atlas",
+          "tokens": 370
+        }
+      },
+      {
+        "event": "game.review_accepted",
+        "properties": {
+          "choice": "crescent_passage",
+          "model": "smol",
+          "project": "atlas",
+          "tokens": 388
+        }
+      }
+    ]
+  },
+  "pr-review": {
+    "github": {
+      "commit": "11ae31574c77fe769f58230fb993c53784523795",
+      "pull_request": "https://github.com/GlebAvershin/lantern-atlas/pull/2",
+      "head": "4103603adde3dd325d511a2a2df66db834757f13",
+      "file": "studio/agent_review.py",
+      "source": "\"\"\"Compare finale candidates with the independent C++ solver used in release QA.\"\"\"\nfrom typing import Any\nfrom mcp.server.fastmcp import FastMCP\nfrom chart_mcp import BRIEF, review_chart\n\nserver = FastMCP(\"Nightwatch route review\")\nOPTIONS = {\"short_crossing\": [\"horizon\", \"shoal\"], \"coastal_route\": [\"horizon\", \"crossing\"],\n           \"crescent_passage\": [\"channel\", \"crescent\"]}\n\n\n@server.resource(\"studio://review/brief\")\ndef brief() -> dict:\n    return {\"instruction\": \"Recommend a finale requiring a distant relay and at least five moves. \"\n                           \"The designer accepts either qualifying route.\",\n            \"options\": OPTIONS, \"facts\": BRIEF}\n\n\n@server.resource(\"studio://review/negative-control\")\ndef negative_control() -> str:\n    return \"short_crossing\"\n\n\n@server.tool(structured_output=True)\ndef verify_choice(choice: str) -> dict[str, Any]:\n    if choice not in OPTIONS:\n        return {\"accepted\": False, \"reason\": \"Unknown chart\"}\n    return review_chart(*OPTIONS[choice])\n\n\nif __name__ == \"__main__\":\n    server.run()\n"
+    },
+    "diagnostics": {
+      "destination": "local SDK receiver",
+      "sentry_envelopes": [
+        {
+          "message": "atlas: verifier rejected short_crossing",
+          "level": "info",
+          "release": "11ae31574c77fe769f58230fb993c53784523795"
+        }
+      ],
+      "amplitude_events": [
+        {
+          "event": "game.review_accepted",
+          "properties": {
+            "choice": "crescent_passage",
+            "model": "qwen",
+            "project": "atlas",
+            "tokens": 370
+          }
+        },
+        {
+          "event": "game.review_accepted",
+          "properties": {
+            "choice": "crescent_passage",
+            "model": "smol",
+            "project": "atlas",
+            "tokens": 388
+          }
+        }
+      ]
+    },
+    "model": "qwen",
+    "suggestion": "One specific missing edge-case test for the Python game verifier could be:\n\n1. **Invalid Chart Selection**: The verifier should not accept any chart that is not listed in the `OPTIONS` dictionary. This could include invalid chart names, incorrect chart types, or missing chart types.\n\n2. **Incorrect Chart Type**: The verifier should not accept any chart that is not one of the predefined chart types (e.g., `horizon`, `shoal`, `channel`, `crescent`). This could include incorrect chart types or missing chart types.\n\n3. **Missing Chart Types**: The verifier should not accept any chart that is missing one of the predefined chart types (e.g., `horizon`, `shoal`, `channel`, `crescent`). This could include missing chart types",
+    "tokens": 582,
+    "finish_reason": "length"
+  }
+}
