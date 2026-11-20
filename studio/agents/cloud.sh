@@ -94,3 +94,13 @@ esac
 export GAME_CHECKOUT="$game"
 uv run --project "$platform/studio" --locked --with amplitude-analytics==1.3.0 --with sentry-sdk==2.75.0 \
   python "$platform/studio/agents/release_review.py" --out "$out" --model-url "http://$bridge:18181"
+if [[ "$STUDIO_PROJECT" == atlas ]]; then
+  probe=(uv run --project "$platform/studio" --locked python "$platform/studio/agents/mixed_probe.py")
+  "${probe[@]}" load "$out/mixed-load.json"
+  "${probe[@]}" outage "$out/model-outage.json" --runner-model-pid "${pids[0]}" --qwen-url "http://$bridge:18181"
+  wait "${pids[0]}" || true
+  "$binary" -m qwen.gguf --alias qwen --host "$bridge" --port 18181 -c 2048 -np 1 -t 2 >qwen-restarted.log 2>&1 &
+  pids[0]=$!
+  curl -fsS --retry 30 --retry-all-errors --retry-delay 1 "http://$bridge:18181/health"
+  "${probe[@]}" recover "$out/model-recovery.json"
+fi

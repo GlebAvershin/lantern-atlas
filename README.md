@@ -1,8 +1,8 @@
 # Lantern Atlas · Nightwatch
 
-[Технологии игры, AI-инструменты и результаты облачных проверок](docs/TECHNOLOGIES.md)
+**[Play in the browser](https://glebavershin.github.io/lantern-atlas/)** · [16-second gameplay clip](evidence/nightwatch.mp4) · [Engineering case study (RU)](docs/NIGHTWATCH.md)
 
-[Play in your browser](https://glebavershin.github.io/lantern-atlas/) · [Watch the 16-second gameplay clip](evidence/nightwatch.mp4) · [Read the engineering case study (RU)](docs/NIGHTWATCH.md) · [Open the pull request](https://github.com/GlebAvershin/lantern-atlas/pull/1)
+A model-proposed chart became the playable finale. An independent C++17 solver verified its six-move minimum. During review a model flagged a missing checkpoint, then a failing Godot test reproduced the problem. The Python tools also run on two Kubernetes replicas with shared PostgreSQL caching. [Game technology and AI evidence](docs/TECHNOLOGIES.md) · [Live model interruption test](https://github.com/GlebAvershin/lantern-atlas/actions/runs/44774475646) · [First-player session](docs/FIRST-PLAYER.md)
 
 ![Crescent Passage. Two shuttered stations receive light, and a pair of marked relays connect opposite sides of the chart.](evidence/nightwatch.png)
 
@@ -19,6 +19,13 @@ Click or tap a lantern. Hover to preview the affected stations. Tab to the board
 | UI tooling | The actual release wireframe was run through a FastAPI model gateway and independently through EmbeddingGemma. Both agreed on the order rendered by the game. Ten simultaneous clients shared a generation. | [Release wireframe](studio/briefs/hud.txt) · [Local request timings](evidence/nightwatch-hud.json) · [Matcher output](evidence/nightwatch-matcher.json) |
 | Review and support | A read-only GitHub MCP resource supplied PR context to a model. A missing move-history checkpoint was reproduced in Godot, fixed and covered by a reopen-and-undo regression. Sentry and Amplitude SDKs were exercised with a local receiver on recorded development events. | [Review](evidence/nightwatch-review.json) · [Regression](studio/check_game.gd) · [SDK evidence](evidence/nightwatch-telemetry.json) |
 | Cloud execution | A standard GitHub-hosted Linux runner started two CPU inference servers and the gateway, checked the level candidates and exercised the cache. The runner stops after the job. Browser gameplay is hosted separately on GitHub Pages. | [Workflow](.github/workflows/nightwatch.yml) · [Measured run](https://github.com/GlebAvershin/lantern-atlas/actions/runs/44767485555) |
+
+## More game engineering work
+
+| Project | What to inspect |
+| --- | --- |
+| Blackout Freight | A first-shift compass shipped to a Roblox closed test. Follow an accepted battery delivery from the client HUD to the server-side experiment and its QA events. [Gameplay and release evidence](https://github.com/GlebAvershin/blackout-freight/blob/main/docs/portfolio-release-2026-11-16.md) |
+| Soccerpoly | A bilingual cup event ships from a validated catalogue. See how a later design tool handles a model-proposed payout that passes the economy rules but misses the designer’s target. [Shipped event](https://github.com/GlebAvershin/Soccerpoly/blob/main/docs/RELEASE.md) · [Designer workflow](https://github.com/GlebAvershin/Soccerpoly/blob/main/docs/CUP-TRIAL.md) |
 
 ## Reproduce the game checks
 

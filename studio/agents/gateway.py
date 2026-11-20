@@ -13,7 +13,7 @@ from psycopg.types.json import Jsonb
 from fastapi import FastAPI, Header, HTTPException
 from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import Literal
 
 PROMPT = "Review the supplied game design brief. Select the best available option and return its ID as choice."
@@ -63,6 +63,7 @@ app = FastAPI(lifespan=lifespan)
 
 class Request(BaseModel):
     model: Literal["qwen", "smol"]
+    candidates: list[str] | None = Field(default=None, min_length=1, max_length=4)
 
 
 async def verify(choice):
@@ -72,8 +73,7 @@ async def verify(choice):
     return result.structuredContent
 
 
-async def generate(model):
-    brief = app.state.brief
+async def generate(model, brief):
     remaining = dict(brief["options"])
     history = []
     tokens = 0
@@ -104,9 +104,9 @@ async def ready():
     return {"project": os.environ["STUDIO_PROJECT"], "negative_control": app.state.control}
 
 
-async def cached_review(team, model):
+async def cached_review(team, model, brief):
     identity = [os.environ["STUDIO_PROJECT"], team, model, MODELS[model][1], os.environ["RELEASE_REVISION"],
-                os.environ["PLATFORM_REVISION"], PROMPT, app.state.brief]
+                os.environ["PLATFORM_REVISION"], PROMPT, brief]
     key = hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()
     lock_id = int.from_bytes(bytes.fromhex(key)[:8], "big", signed=True)
     async with await database() as db:
@@ -116,7 +116,7 @@ async def cached_review(team, model):
         row = await cur.fetchone()
         if row:
             return {"result": row[0], "cache": "hit", "inference_tokens": 0}
-        result = await generate(model)
+        result = await generate(model, brief)
         await db.execute("""INSERT INTO review_cache VALUES (%s,%s, now() + interval '1 day')
             ON CONFLICT (cache_key) DO UPDATE SET result=EXCLUDED.result, expires_at=EXCLUDED.expires_at""",
             (key, Jsonb(result)))
@@ -129,9 +129,16 @@ async def review(request: Request, authorization: str = Header(default="")):
                  hmac.compare_digest(authorization.encode(), ("Bearer " + token).encode())), None)
     if team is None:
         raise HTTPException(401, "Unknown team credential")
+    brief = app.state.brief
+    if request.candidates is not None:
+        options = brief["options"]
+        selected = set(request.candidates)
+        if len(selected) != len(request.candidates) or not selected.issubset(options):
+            raise HTTPException(422, "Select distinct choices from the game catalogue")
+        brief = {**brief, "options": {key: value for key, value in options.items() if key in selected}}
     try:
         async with asyncio.timeout(90), app.state.slots:
-            result = await cached_review(team, request.model)
+            result = await cached_review(team, request.model, brief)
     except TimeoutError as error:
         raise HTTPException(504, "Review deadline exceeded") from error
     except (httpx.HTTPError, ValueError, KeyError, IndexError, psycopg.Error) as error:
