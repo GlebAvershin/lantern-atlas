@@ -2,65 +2,154 @@ extends Control
 
 signal lantern_pressed(index: int)
 
-const GOLD := Color("#ffd788")
-const LIT := Color("#faeece")
-const COLD := Color("#719aa4")
-const INK := Color("#0a1a29")
-var lights := 0
-var pulse := -1
-var glow := 0.0
+const GOLD := Color("#f9c67b")
+const PAPER := Color("#fff1c8")
+const COLD := Color("#739a9d")
+const RELAY := Color("#85e2d5")
+const INK := Color("#0c2530")
+var chart
+var hinted := -1
+var hovered := -1
+var source := -1
+var elapsed := 1.0
+var changed := 0
+var reduced := false
+var cursor := 0
+
+func _ready() -> void:
+	focus_mode = Control.FOCUS_ALL
+	focus_entered.connect(queue_redraw)
+	focus_exited.connect(queue_redraw)
+	mouse_exited.connect(func(): hovered = -1; queue_redraw())
+	set_process(false)
+
+func pitch() -> float:
+	return minf((size.x - 64) / chart.width, (size.y - 38) / chart.width)
 
 func center_of(index: int) -> Vector2:
-	return size / 2.0 + 89.0 * Vector2(index % 3 - 1, floori(index / 3.0) - 1)
+	var half: float = (chart.width - 1) * 0.5
+	return size * 0.5 + pitch() * Vector2(index % chart.width - half, floori(index / float(chart.width)) - half)
 
-func flash(index: int) -> void:
-	pulse = index
-	glow = 1
-	set_process(true)
-
-func _process(delta: float) -> void:
-	glow = maxf(0, glow - 3.4 * delta)
+func clear_feedback() -> void:
+	cursor = 0
+	hinted = -1
+	hovered = -1
+	elapsed = 1.0
+	source = -1
+	set_process(false)
 	queue_redraw()
-	if glow == 0:
+
+func flash(cell: int) -> void:
+	source = cell
+	changed = chart.pulses[cell]
+	hinted = -1
+	elapsed = 1.0 if reduced else 0.0
+	set_process(not reduced)
+	queue_redraw()
+
+func _process(dt: float) -> void:
+	elapsed += dt
+	queue_redraw()
+	if elapsed >= 0.56:
 		set_process(false)
 
 func _draw() -> void:
-	var middle := size / 2.0
-	var etched := Color("#28404c")
-	for j in range(77):
-		var point := Vector2(fposmod(j * 79.1 + 31, size.x), fposmod(j * j * 6.73 + 11, size.y))
-		draw_circle(point, 0.65 + (j % 3) * 0.3, Color("#4c6570"))
-	for radius: float in [54.0, 108.0, 151.0]:
-		draw_arc(middle, radius, 0, TAU, 120, etched, 1, true)
-	for j in range(60):
-		var axis := Vector2.UP.rotated(j * TAU / 60)
-		draw_line(middle + axis * 147, middle + axis * (154 if j % 5 == 0 else 150), COLD, 1, true)
-	for i in range(9):
-		for next: int in [i + 1, i + 3]:
-			if next >= 9 or (next == i + 1 and i % 3 == 2):
-				continue
-			var bright := (lights & (1 << i)) != 0 and (lights & (1 << next)) != 0
-			draw_line(center_of(i), center_of(next), Color("#af9568") if bright else etched, 1.5, true)
-	for i in range(9):
-		var p := center_of(i)
-		var is_lit := (lights & (1 << i)) != 0
-		draw_circle(p, 20, INK)
-		draw_arc(p, 19, 0, TAU, 48, GOLD if is_lit else COLD, 1.5, true)
-		if is_lit:
-			draw_circle(p, 16, Color("#39392e"))
-			var star := PackedVector2Array()
-			for k in range(8):
-				star.append(p + Vector2.UP.rotated(k * TAU / 8) * (13 if k % 2 == 0 else 3.6))
-			draw_colored_polygon(star, LIT)
-		else:
-			draw_circle(p, 4, COLD)
-		if i == pulse and glow > 0:
-			draw_arc(p, 21 + (1-glow)*15, 0, TAU, 48, Color(GOLD, glow), 2, true)
+	if not chart or chart.pulses.is_empty():
+		return
+	var middle := size / 2
+	var radius := minf(size.x, size.y) * 0.46
+	var ink := Color("#2b4750")
+	for i in 63:
+		var p := Vector2(fposmod(i * 77.31 + 17,size.x), fposmod(i*i*9.32+11,size.y))
+		draw_circle(p, 0.7 + 0.3 * (i%3), Color("#526872"))
+	for f in [0.58, 0.94, 1.0]:
+		draw_arc(middle, radius*f, 0,TAU,112,ink,1,true)
+	for i in 60:
+		var axis := Vector2.UP.rotated(TAU*i/60)
+		draw_line(middle+axis*radius*0.96,middle+axis*(radius+ (3 if i%5==0 else 0)),ink,1,true)
+	for i in chart.pulses.size():
+		if i%chart.width != chart.width-1:
+			draw_line(center_of(i), center_of(i+1), ink,1.5,true)
+		if i+chart.width < chart.pulses.size():
+			draw_line(center_of(i), center_of(i+chart.width), ink,1.5,true)
+	if chart.relay.size() == 2:
+		draw_dashed_line(center_of(int(chart.relay[0])),center_of(int(chart.relay[1])),Color("#54998f"),2,6,true)
+	var preview := 0
+	if hovered >= 0 and chart.lights != chart.all_lit and not chart.shutters & (1 << hovered):
+		preview = chart.pulses[hovered]
+	for i in chart.pulses.size():
+		draw_lantern(i, preview)
+
+func draw_lantern(i: int, preview: int) -> void:
+	var pos := center_of(i)
+	var bit := 1 << i
+	var lit: bool = bool(chart.lights & bit)
+	var linked: bool = i in chart.relay
+	var shut: bool = bool(chart.shutters & bit)
+	var r := clampf(pitch()*0.235,13,26)
+	var wave := 0.0
+	if elapsed < 0.56 and changed & bit and source >= 0:
+		var dist := center_of(source).distance_to(pos) / pitch()
+		var age := elapsed - minf(0.17,dist*0.064)
+		if age >= 0 and age < 0.36:
+			wave = sin(PI*age/0.36)
+			if i != source:
+				var travel := clampf(elapsed / maxf(0.07,dist*0.065),0,1)
+				draw_circle(center_of(source).lerp(pos,travel),3,RELAY if linked else GOLD)
+	r += wave*3.5
+	var rim := GOLD if lit else COLD
+	if lit:
+		draw_circle(pos,r+5,Color(GOLD,0.08))
+	if preview & bit:
+		draw_arc(pos,r+5,-PI*0.80,-PI*0.20,12,RELAY,2,true)
+		draw_arc(pos,r+5,PI*0.20,PI*0.80,12,RELAY,2,true)
+	if hinted == i or (has_focus() and cursor == i):
+		draw_arc(pos,r+9,0,TAU,52,PAPER,2.5,true)
+	if linked:
+		var diamond := PackedVector2Array([pos+Vector2.UP*(r+6),pos+Vector2.RIGHT*(r+6),pos+Vector2.DOWN*(r+6),pos+Vector2.LEFT*(r+6),pos+Vector2.UP*(r+6)])
+		draw_colored_polygon(diamond.slice(0,4), INK)
+		draw_polyline(diamond,RELAY,2,true)
+	draw_circle(pos, r, Color("#523f30") if lit else INK)
+	draw_arc(pos,r,0,TAU,48,rim,2,true)
+	if shut:
+		for x in [-0.38,0,0.38]:
+			draw_line(pos+Vector2(x*r,-r*0.43),pos+Vector2(x*r,r*0.43),rim,2.5,true)
+	elif lit:
+		var star := PackedVector2Array()
+		for k in 8:
+			star.append(pos+Vector2.UP.rotated(k*TAU/8)*(r*(0.70 if k%2==0 else 0.20)))
+		draw_colored_polygon(star,PAPER)
+	else:
+		draw_circle(pos, r*0.2, rim)
+	if wave > 0:
+		draw_arc(pos,r+5+5*wave,0,TAU,48,Color(GOLD,wave*0.7),2,true)
+
+func nearest(point: Vector2) -> int:
+	for i in chart.pulses.size():
+		if point.distance_to(center_of(i)) <= pitch()*0.39:
+			return i
+	return -1
 
 func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-		for i in range(9):
-			if event.position.distance_to(center_of(i)) <= 32:
-				lantern_pressed.emit(i)
-				accept_event()
-				return
+	if event is InputEventKey and event.pressed and not event.echo:
+		var x: int = cursor % chart.width
+		var y := floori(cursor / float(chart.width))
+		match event.keycode:
+			KEY_LEFT: x = maxi(0,x-1)
+			KEY_RIGHT: x = mini(chart.width-1,x+1)
+			KEY_UP: y = maxi(0,y-1)
+			KEY_DOWN: y = mini(chart.width-1,y+1)
+			KEY_SPACE, KEY_ENTER: lantern_pressed.emit(cursor)
+			_: return
+		cursor = y * chart.width + x
+		queue_redraw()
+		accept_event()
+	elif event is InputEventMouseMotion:
+		hovered = nearest(event.position)
+		queue_redraw()
+	elif event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		var cell := nearest(event.position)
+		if cell != -1:
+			cursor = cell
+			lantern_pressed.emit(cell)
+			accept_event()

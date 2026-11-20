@@ -2,15 +2,15 @@ config_version=5
 
 [application]
 config/name="Lantern Atlas"
+config/icon="res://art/lantern-icon.png"
 run/main_scene="res://atlas.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
 [display]
-window/size/viewport_width=420
-window/size/viewport_height=700
+window/size/viewport_width=900
+window/size/viewport_height=580
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep"
-window/handheld/orientation=1
+window/stretch/aspect="expand"
 
 [rendering]
 renderer/rendering_method="gl_compatibility"

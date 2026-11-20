@@ -1,0 +1,14 @@
+{
+  "context": {
+    "pr": "https://github.com/GlebAvershin/lantern-atlas/pull/1",
+    "sha": "10ae2f2c09810dca79fe7961c69165126cf01474",
+    "file": "game/logbook.gd",
+    "sha256": "b5e2af1dd125f01925026efeb20d61d0de0cfe62c8e347e338ee9b4845beeea9",
+    "source": "extends RefCounted\n\nconst FILE := \"user://nightwatch-v2.cfg\"\nvar best := {}\nvar chapter := 0\nvar quiet := false\nvar reduced := false\nvar file: String\n\nfunc _init(path: String = FILE) -> void:\n\tfile = path\n\tvar cfg := ConfigFile.new()\n\tif cfg.load(file) == OK:\n\t\tvar records = cfg.get_value(\"voyage\",\"best\",{})\n\t\tif records is Dictionary:\n\t\t\tfor key in records:\n\t\t\t\tif key is String and records[key] is int and records[key] > 0:\n\t\t\t\t\tbest[key] = records[key]\n\t\tchapter = int(cfg.get_value(\"voyage\",\"chapter\",0))\n\t\tquiet = bool(cfg.get_value(\"settings\",\"quiet\",false))\n\t\treduced = bool(cfg.get_value(\"settings\",\"reduced\",false))\n\nfunc save() -> void:\n\tvar cfg := ConfigFile.new()\n\tcfg.set_value(\"voyage\",\"best\",best)\n\tcfg.set_value(\"voyage\",\"chapter\",chapter)\n\tcfg.set_value(\"settings\",\"quiet\",quiet)\n\tcfg.set_value(\"settings\",\"reduced\",reduced)\n\tvar temp := file + \".tmp\"\n\tif cfg.save(temp) != OK or DirAccess.rename_absolute(temp,file) != OK:\n\t\tpush_warning(\"Could not save the voyage log\")\n"
+  },
+  "acceptance": "A player should be able to quit mid-chart, reopen it at the same lights and move count, and undo the last move.",
+  "model": "qwen",
+  "raw_review": "### Review of the Godot Persistence Implementation Against Acceptance Criteria\n\n#### 1. Missing Saved Value\nThe implementation does not include a saved value for the last move. This is a critical requirement for the game to allow the player to quit mid-chart, reopen it at the same lights, and undo the last move. The current implementation does not include a way to save the last move, which is essential for undoing the last move.\n\n#### 2. Concrete Regression Test\nTo identify a concrete regression test, we need to ensure that the game can handle the scenario where the player quits mid-chart and then restarts it at the same lights, and then undo the last move. Here's a concrete regression test:\n\n1. **Initial Setup:**\n   - The player quits mid-chart.\n  ",
+  "finish_reason": "length",
+  "tokens": 504
+}

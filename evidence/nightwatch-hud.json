@@ -1,0 +1,283 @@
+{
+  "wireframe": "Chart name and current chapter (logbook)\nInteractive star map (sky)\nUndo, hint and advance buttons (controls)",
+  "fresh": {
+    "outcomes": {
+      "miss": 1,
+      "joined": 9
+    },
+    "p95_ms": 390.72,
+    "inference_tokens": 132,
+    "requests": [
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "miss",
+        "inference_tokens": 132,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 365.5,
+        "client_ms": 390.72
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 365.3,
+        "client_ms": 377.71
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 365.3,
+        "client_ms": 377.6
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 365.4,
+        "client_ms": 377.58
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 365.4,
+        "client_ms": 377.57
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 363.3,
+        "client_ms": 377.55
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 363.3,
+        "client_ms": 377.65
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 363.4,
+        "client_ms": 377.7
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 363.5,
+        "client_ms": 377.76
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "joined",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 363.5,
+        "client_ms": 377.81
+      }
+    ]
+  },
+  "warm": {
+    "outcomes": {
+      "hit": 10
+    },
+    "p95_ms": 8.23,
+    "inference_tokens": 0,
+    "requests": [
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 4.22
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 5.06
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 7.36
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 8.23
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 5.67
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 7.47
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 5.7
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 8.13
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 6.47
+      },
+      {
+        "rows": [
+          "logbook",
+          "sky",
+          "controls"
+        ],
+        "cache": "hit",
+        "inference_tokens": 0,
+        "strategy": "whole",
+        "model": "qwen",
+        "latency_ms": 0.0,
+        "client_ms": 7.28
+      }
+    ]
+  },
+  "matches_design": true
+}
