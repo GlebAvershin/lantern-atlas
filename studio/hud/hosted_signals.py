@@ -19,8 +19,9 @@ from mcp import ClientSession, StdioServerParameters
 from mcp.client.stdio import stdio_client
 
 
-async def recheck(game):
-    trace = json.loads((game / "docs/evidence/hud/authoring.json").read_text())
+async def recheck(game, trace=None):
+    if trace is None:
+        trace = json.loads((game / "docs/evidence/hud/authoring.json").read_text())
     project = json.loads((game / "studio/hud-brief.json").read_text())["project"]
     if trace["project"] != project:
         raise ValueError("Trace belongs to another game")

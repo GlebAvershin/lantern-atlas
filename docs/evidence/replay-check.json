@@ -1,0 +1,20 @@
+{
+  "game": "Lantern Atlas",
+  "query_sha256": "876b75c2ee0cd2df7802b030410b158e817181b9c72092681425a004069106c9",
+  "research_cases": 7,
+  "research_receipts": 8,
+  "provider_bindings": {
+    "bedrock-mantle": {
+      "model": "qwen.qwen3-coder-30b-a3b-instruct",
+      "trace_sha256": "aa61fc54ed9a5f2101d28d296e6c6aeb47771b9cee8b78612ac65b891c547179",
+      "accepted_regions": 3,
+      "rejected_control_regions": 3
+    },
+    "databricks": {
+      "model": "databricks-qwen3-next-80b-a3b-instruct",
+      "trace_sha256": "733137c157ac2aa550489f27fd228996b8c9cbfdef0b5f5283c9f5fa413a36dd",
+      "accepted_regions": 3,
+      "rejected_control_regions": 3
+    }
+  }
+}

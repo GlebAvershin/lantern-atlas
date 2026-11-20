@@ -25,3 +25,13 @@ python studio/research/paired.py "../Mosaic Pier" > research-paired-new.json
 ```
 
 The paired command reads the game's published `docs/evidence/research.json`. It repeats each decision with the same Bedrock model and temperature, exposes normalized measurements and asks for a single action identifier. It records both exact-match and first-line accuracy to distinguish formatting problems from a wrong recommendation. The expected action is withheld from both prompts. A hard-coded rule makes the final decision. The paired cases measure behavior on these scenarios; a held-out gameplay board split is independent of the prompt evaluation.
+
+## Verifying published evidence
+
+From the Lantern Atlas repository, use a Python 3.12 environment with the [HUD dependencies](../hud/requirements.txt). Pass the path to one game checkout, or use `.` for Lantern Atlas.
+
+```sh
+python studio/research/verify_evidence.py "../Blackout Freight"
+```
+
+The command recalculates the study in SQLite, compares the results and input hashes with the saved Databricks query and Bedrock evaluations, and checks the recorded ingestion acknowledgements. For each saved Bedrock and Databricks HUD trace, it starts the game's MCP verifier and exercises all three accepted bindings and three rotated controls. This replay runs locally with the committed inputs.
