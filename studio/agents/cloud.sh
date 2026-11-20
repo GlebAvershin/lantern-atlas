@@ -21,7 +21,8 @@ cleanup() {
 trap cleanup EXIT
 cd "$work"
 kind create cluster --name "$cluster" --wait 150s
-bridge=$(docker network inspect kind --format '{{(index .IPAM.Config 0).Gateway}}')
+bridge=$(docker exec "$cluster-control-plane" ip -4 route show default | awk 'NR == 1 {print $3}')
+[[ "$bridge" =~ ^[0-9]+(\.[0-9]+){3}$ ]] || { echo "Missing cluster IPv4 gateway"; exit 1; }
 docker run -d --rm --name review-postgres -e POSTGRES_PASSWORD=ci-local -e POSTGRES_DB=studio \
   -p "$bridge:25432:5432" postgres:16-bookworm
 "$platform/studio/agents/build-image.sh" "$platform" "$game" "$STUDIO_PROJECT"
