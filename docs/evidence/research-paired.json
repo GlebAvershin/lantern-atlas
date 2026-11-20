@@ -1,29 +1,89 @@
 {
   "model": "qwen.qwen3-coder-30b-a3b-instruct",
-  "baseline_sha256": "e3a290c8e8dd10b90f4c90926eab3a76f0d790f3a525f3551ce916f45e2f6da8",
-  "features_sha256": "a7c1e62647187a0c7535e603dc27baeebe6a443f0e71d73097a7880f1b81936f",
+  "baseline_sha256": "8c0d9ce6f6d8a6453b5dc9ce15f6dcc450a4668e36d14f6f40617fb20d01ae92",
+  "features_sha256": "d0a70a8f4b666e6ed129fff1c816197d2f67d112ab3a9f0308c6769a46774641",
   "cases": [
     {
-      "scenario": "both_fresh_failed",
+      "scenario": "alternate_warm_other_replica",
       "facts": {
-        "fresh_primary_succeeded": false,
-        "fresh_alternate_succeeded": false,
-        "cached_read_succeeded": true
+        "http_success": true,
+        "returned_cached_review": true,
+        "returned_backup_model": true
       },
-      "rule": "pause_generation",
-      "model_answer": "pause_generation",
-      "strict_before": false,
+      "rule": "serve_cache",
+      "model_answer": "serve_cache",
+      "strict_before": true,
       "strict_after": true,
       "first_line_before": true,
       "first_line_after": true,
-      "tokens": 115
+      "tokens": 117
     },
     {
-      "scenario": "primary_restored_replay",
+      "scenario": "both_down_cold",
       "facts": {
-        "fresh_primary_succeeded": true,
-        "fresh_alternate_succeeded": true,
-        "cached_read_succeeded": true
+        "http_success": false,
+        "returned_cached_review": false,
+        "returned_backup_model": false
+      },
+      "rule": "pause_generation",
+      "model_answer": "pause_generation",
+      "strict_before": true,
+      "strict_after": true,
+      "first_line_before": true,
+      "first_line_after": true,
+      "tokens": 117
+    },
+    {
+      "scenario": "both_down_warm",
+      "facts": {
+        "http_success": true,
+        "returned_cached_review": true,
+        "returned_backup_model": false
+      },
+      "rule": "serve_cache",
+      "model_answer": "serve_cache",
+      "strict_before": true,
+      "strict_after": true,
+      "first_line_before": true,
+      "first_line_after": true,
+      "tokens": 117
+    },
+    {
+      "scenario": "inflight_fallback",
+      "facts": {
+        "http_success": true,
+        "returned_cached_review": false,
+        "returned_backup_model": true
+      },
+      "rule": "use_alternate",
+      "model_answer": "use_alternate",
+      "strict_before": true,
+      "strict_after": true,
+      "first_line_before": true,
+      "first_line_after": true,
+      "tokens": 118
+    },
+    {
+      "scenario": "pinned_primary_down",
+      "facts": {
+        "http_success": false,
+        "returned_cached_review": false,
+        "returned_backup_model": false
+      },
+      "rule": "pause_generation",
+      "model_answer": "pause_generation",
+      "strict_before": true,
+      "strict_after": true,
+      "first_line_before": true,
+      "first_line_after": true,
+      "tokens": 117
+    },
+    {
+      "scenario": "primary_restored",
+      "facts": {
+        "http_success": true,
+        "returned_cached_review": false,
+        "returned_backup_model": false
       },
       "rule": "use_primary",
       "model_answer": "use_primary",
@@ -31,22 +91,22 @@
       "strict_after": true,
       "first_line_before": true,
       "first_line_after": true,
-      "tokens": 115
+      "tokens": 117
     },
     {
-      "scenario": "recorded_outage",
+      "scenario": "restored_warm_other_replica",
       "facts": {
-        "fresh_primary_succeeded": false,
-        "fresh_alternate_succeeded": true,
-        "cached_read_succeeded": true
+        "http_success": true,
+        "returned_cached_review": true,
+        "returned_backup_model": false
       },
-      "rule": "use_alternate",
-      "model_answer": "use_alternate",
-      "strict_before": false,
+      "rule": "serve_cache",
+      "model_answer": "serve_cache",
+      "strict_before": true,
       "strict_after": true,
       "first_line_before": true,
       "first_line_after": true,
-      "tokens": 116
+      "tokens": 117
     }
   ]
 }
