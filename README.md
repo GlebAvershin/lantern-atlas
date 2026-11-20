@@ -1,8 +1,8 @@
 # Lantern Atlas · Nightwatch
 
-[Технологии игры, AI-инструменты и результаты облачных проверок](docs/TECHNOLOGIES.md)
+**[Play in the browser](https://glebavershin.github.io/lantern-atlas/)** · [16-second gameplay clip](evidence/nightwatch.mp4) · [Engineering case study (RU)](docs/NIGHTWATCH.md)
 
-[Play in your browser](https://glebavershin.github.io/lantern-atlas/) · [Watch the 16-second gameplay clip](evidence/nightwatch.mp4) · [Read the engineering case study (RU)](docs/NIGHTWATCH.md) · [Open the pull request](https://github.com/GlebAvershin/lantern-atlas/pull/1)
+A model-proposed chart became the playable finale. An independent C++17 solver verified its six-move minimum. During review a model flagged a missing checkpoint, then a failing Godot test reproduced the problem. The Python tools also run on two Kubernetes replicas with shared PostgreSQL caching. [Game technology and AI evidence](docs/TECHNOLOGIES.md) · [Live model interruption test](https://github.com/GlebAvershin/lantern-atlas/actions/runs/44774475646) · [First-player session](docs/FIRST-PLAYER.md)
 
 ![Crescent Passage. Two shuttered stations receive light, and a pair of marked relays connect opposite sides of the chart.](evidence/nightwatch.png)
 

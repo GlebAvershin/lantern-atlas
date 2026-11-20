@@ -1,0 +1,2182 @@
+{
+  "run": "https://github.com/GlebAvershin/lantern-atlas/actions/runs/44774475646",
+  "source_revision": "685cf960489a2b8ca8a379963e6d4eb533e9384e",
+  "mixed-load": {
+    "invalid_requests": [
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "unknown"
+        ],
+        "replica": 0,
+        "status": 422,
+        "client_ms": 19.62
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 422,
+        "client_ms": 3.29
+      }
+    ],
+    "all": {
+      "n": 120,
+      "p95_ms": 2498.5,
+      "tokens": 5934,
+      "cache": {
+        "miss": 12,
+        "hit": 108
+      }
+    },
+    "first_batch": {
+      "n": 12,
+      "p95_ms": 5266.21,
+      "tokens": 5934,
+      "cache": {
+        "miss": 12
+      }
+    },
+    "repeated": {
+      "n": 108,
+      "p95_ms": 46.16,
+      "tokens": 0,
+      "cache": {
+        "hit": 108
+      }
+    },
+    "requests": [
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 2015.95,
+        "cache": "miss",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 358,
+        "attempts": 1,
+        "batch": 0
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 463.24,
+        "cache": "miss",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 373,
+        "attempts": 1,
+        "batch": 0
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 3606.45,
+        "cache": "miss",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 776,
+        "attempts": 2,
+        "batch": 0
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 899.69,
+        "cache": "miss",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 356,
+        "attempts": 1,
+        "batch": 0
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 3153.9,
+        "cache": "miss",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 776,
+        "attempts": 2,
+        "batch": 0
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 3632.41,
+        "cache": "miss",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 356,
+        "attempts": 1,
+        "batch": 0
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 851.99,
+        "cache": "miss",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 373,
+        "attempts": 1,
+        "batch": 0
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 2142.07,
+        "cache": "miss",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 370,
+        "attempts": 1,
+        "batch": 0
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 4928.44,
+        "cache": "miss",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 734,
+        "attempts": 2,
+        "batch": 0
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 2737.6,
+        "cache": "miss",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 358,
+        "attempts": 1,
+        "batch": 0
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 2498.5,
+        "cache": "miss",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 370,
+        "attempts": 1,
+        "batch": 0
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 5266.21,
+        "cache": "miss",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 734,
+        "attempts": 2,
+        "batch": 0
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 22.5,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 1
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 28.99,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 1
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 43.61,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 1
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 39.21,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 1
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 41.07,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 1
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 40.99,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 1
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 36.77,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 1
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 44.92,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 1
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 44.16,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 1
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 46.46,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 1
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 41.63,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 1
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 45.2,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 1
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 28.5,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 2
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 34.91,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 2
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 45.31,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 2
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 45.28,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 2
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 45.67,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 2
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 32.08,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 2
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 38.24,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 2
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 40.41,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 2
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 45.25,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 2
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 45.55,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 2
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 37.09,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 2
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 39.02,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 2
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 31.22,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 3
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 47.44,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 3
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 49.36,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 3
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 48.73,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 3
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 45.79,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 3
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 23.3,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 3
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 41.47,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 3
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 40.18,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 3
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 43.88,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 3
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 39.85,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 3
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 47.35,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 3
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 42.33,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 3
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 44.78,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 4
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 20.41,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 4
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 34.39,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 4
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 42.08,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 4
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 36.74,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 4
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 38.79,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 4
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 44.79,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 4
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 46.05,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 4
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 42.09,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 4
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 21.9,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 4
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 44.48,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 4
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 35.54,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 4
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 30.92,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 5
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 21.18,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 5
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 39.87,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 5
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 29.39,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 5
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 41.15,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 5
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 41.89,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 5
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 46.09,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 5
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 44.05,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 5
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 45.31,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 5
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 42.76,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 5
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 41.68,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 5
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 44.87,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 5
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 40.54,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 6
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 45.37,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 6
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 22.37,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 6
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 39.61,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 6
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 41.62,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 6
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 46.16,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 6
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 38.02,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 6
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 41.95,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 6
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 45.38,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 6
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 43.66,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 6
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 44.85,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 6
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 44.52,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 6
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 30.61,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 7
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 35.62,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 7
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 27.72,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 7
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 45.13,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 7
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 43.82,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 7
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 42.46,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 7
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 45.37,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 7
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 40.37,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 7
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 40.95,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 7
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 43.66,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 7
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 36.73,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 7
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 37.75,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 7
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 37.02,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 8
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 21.79,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 8
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 44.56,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 8
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 32.07,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 8
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 41.72,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 8
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 36.37,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 8
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 39.89,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 8
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 32.16,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 8
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 41.02,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 8
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 33.7,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 8
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 42.16,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 8
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 40.96,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 8
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 20.75,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 9
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 39.27,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 9
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 34.96,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 9
+      },
+      {
+        "team": "design",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 28.61,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 9
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 43.11,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 9
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 39.8,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 9
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 36.76,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 9
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "short_crossing",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 35.0,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 9
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 40.45,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 9
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 0,
+        "status": 200,
+        "client_ms": 36.92,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-jxkbt",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 9
+      },
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "coastal_route",
+          "crescent_passage"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 35.7,
+        "cache": "hit",
+        "choice": "crescent_passage",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 1,
+        "batch": 9
+      },
+      {
+        "team": "qa",
+        "model": "qwen",
+        "choices": [
+          "short_crossing",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 200,
+        "client_ms": 41.58,
+        "cache": "hit",
+        "choice": "coastal_route",
+        "worker": "game-review-69dd685ff4-pfv98",
+        "tokens": 0,
+        "attempts": 2,
+        "batch": 9
+      }
+    ]
+  },
+  "model-outage": {
+    "busy_slot_confirmed": true,
+    "interrupted": {
+      "team": "design",
+      "model": "qwen",
+      "choices": [
+        "coastal_route"
+      ],
+      "replica": 0,
+      "status": 502,
+      "client_ms": 33.13
+    },
+    "cached_during_outage": {
+      "team": "design",
+      "model": "qwen",
+      "choices": [
+        "short_crossing",
+        "coastal_route"
+      ],
+      "replica": 1,
+      "status": 200,
+      "client_ms": 14.45,
+      "cache": "hit",
+      "choice": "coastal_route",
+      "worker": "game-review-69dd685ff4-pfv98",
+      "tokens": 0,
+      "attempts": 2
+    },
+    "uncached_during_outage": {
+      "team": "qa",
+      "model": "qwen",
+      "choices": [
+        "coastal_route"
+      ],
+      "replica": 1,
+      "status": 502,
+      "client_ms": 17.52
+    },
+    "other_model_during_outage": {
+      "team": "qa",
+      "model": "smol",
+      "choices": [
+        "coastal_route"
+      ],
+      "replica": 0,
+      "status": 200,
+      "client_ms": 290.75,
+      "cache": "miss",
+      "choice": "coastal_route",
+      "worker": "game-review-69dd685ff4-jxkbt",
+      "tokens": 358,
+      "attempts": 1
+    }
+  },
+  "model-recovery": {
+    "retry_same_request": {
+      "team": "design",
+      "model": "qwen",
+      "choices": [
+        "coastal_route"
+      ],
+      "replica": 1,
+      "status": 200,
+      "client_ms": 1666.95,
+      "cache": "miss",
+      "choice": "coastal_route",
+      "worker": "game-review-69dd685ff4-pfv98",
+      "tokens": 340,
+      "attempts": 1
+    },
+    "repeat_other_replica": {
+      "team": "design",
+      "model": "qwen",
+      "choices": [
+        "coastal_route"
+      ],
+      "replica": 0,
+      "status": 200,
+      "client_ms": 10.29,
+      "cache": "hit",
+      "choice": "coastal_route",
+      "worker": "game-review-69dd685ff4-jxkbt",
+      "tokens": 0,
+      "attempts": 1
+    }
+  }
+}
