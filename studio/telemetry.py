@@ -15,7 +15,7 @@ from sentry_sdk.transport import Transport
 EVIDENCE = Path(__file__).resolve().parents[1] / "evidence"
 
 
-def capture():
+def record_events(events, message, level, release):
     sdk_events = []
     issues = []
 
@@ -42,27 +42,32 @@ def capture():
     Thread(target=receiver.serve_forever, daemon=True).start()
     config = Config(server_url=f"http://127.0.0.1:{receiver.server_port}/2/httpapi", flush_max_retries=2)
     analytics = Amplitude("offline-authoring", configuration=config)
-    recorded = json.loads((EVIDENCE/"nightwatch-authoring.json").read_text())
     try:
-        for row in recorded["candidates"]:
-            analytics.track(BaseEvent("nightwatch.chart_reviewed", device_id="authoring-ci",
-                event_properties={"model":row["model"], "par":row["review"]["par"],
-                                  "accepted":row["review"]["accepted"], "tokens":row["tokens"]}))
+        for name, properties in events:
+            analytics.track(BaseEvent(name, device_id="authoring-ci", event_properties=properties))
         analytics.flush()
         analytics.shutdown()
     finally:
         receiver.shutdown()
         receiver.server_close()
-    failure = next(line for line in (EVIDENCE/"checkpoint-before.txt").read_text().splitlines() if line.startswith("FAILED:"))
     sentry_sdk.init(dsn="http://local@127.0.0.1/1", transport=IssueCapture,
-                         default_integrations=False, release="nightwatch-review-10ae2f2")
-    sentry_sdk.capture_message(failure, level="error")
+                         default_integrations=False, release=release)
+    sentry_sdk.capture_message(message, level=level)
     sentry_sdk.flush()
     sentry_sdk.get_client().close()
+    assert len(sdk_events) == len(events) and len(issues) == 1
+    return {"destination": "local SDK receiver", "sentry_envelopes": issues, "amplitude_events": sdk_events}
+
+
+def capture():
+    recorded = json.loads((EVIDENCE/"nightwatch-authoring.json").read_text())
+    events = [("nightwatch.chart_reviewed", {"model": row["model"], "par": row["review"]["par"],
+               "accepted": row["review"]["accepted"], "tokens": row["tokens"]}) for row in recorded["candidates"]]
+    failure = next(line for line in (EVIDENCE/"checkpoint-before.txt").read_text().splitlines() if line.startswith("FAILED:"))
+    captured = record_events(events, failure, "error", "nightwatch-review-10ae2f2")
     passed = "Passed: true" in (EVIDENCE/"checkpoint-after.txt").read_text()
-    assert len(sdk_events) == len(recorded["candidates"]) and len(issues) == 1 and passed, (len(sdk_events), len(issues), passed)
-    return {"source":"release QA and authoring evidence replay", "destination":"local SDK receiver",
-            "sentry_envelopes":issues, "amplitude_events":sdk_events, "checkpoint_retest_passed":passed}
+    assert passed
+    return {**captured, "source": "release QA and authoring evidence replay", "checkpoint_retest_passed": passed}
 
 
 if __name__ == "__main__":

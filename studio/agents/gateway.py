@@ -48,6 +48,12 @@ async def lifespan(app):
             app.state.tokens = json.loads(os.environ["STUDIO_TOKENS"])
             if not app.state.tokens or any(not key or not value for key, value in app.state.tokens.items()):
                 raise ValueError("Missing tenant credentials")
+            control = await mcp.read_resource("studio://review/negative-control")
+            choice = control.contents[0].text
+            verdict = await verify(choice)
+            if choice not in brief["options"] or verdict["accepted"]:
+                raise ValueError("The game verifier must reject the negative control")
+            app.state.control = {"choice": choice, "verdict": verdict}
             app.state.slots = asyncio.Semaphore(12)
             yield
 
@@ -95,7 +101,7 @@ async def generate(model):
 
 @app.get("/ready")
 async def ready():
-    return {"project": os.environ["STUDIO_PROJECT"]}
+    return {"project": os.environ["STUDIO_PROJECT"], "negative_control": app.state.control}
 
 
 async def cached_review(team, model):

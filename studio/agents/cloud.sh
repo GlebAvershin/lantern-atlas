@@ -85,3 +85,11 @@ after=json.loads((p/'restored.json').read_text())
 workers=lambda phase: {r['worker'] for r in phase['responses']}
 assert workers(before['fresh']).isdisjoint(workers(after['restored']))
 PY
+case "$STUDIO_PROJECT" in
+  atlas) export ADAPTER=studio/agent_review.py ;;
+  soccer) export ADAPTER=scripts/agent_review.py ;;
+  freight) export ADAPTER=analysis/agent_review.py ;;
+esac
+export GAME_CHECKOUT="$game"
+uv run --project "$platform/studio" --locked --with amplitude-analytics==1.3.0 --with sentry-sdk==2.75.0 \
+  python "$platform/studio/agents/release_review.py" --out "$out" --model-url "http://$bridge:18181"

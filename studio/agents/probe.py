@@ -29,6 +29,10 @@ async def probe(urls, restored):
                                    headers={"Authorization": "Bearer invalid"})
         assert denied.status_code == 401
         report = {"project": os.environ["STUDIO_PROJECT"], "unauthorized_status": denied.status_code}
+        ready = await client.get(urls[0] + "/ready")
+        ready.raise_for_status()
+        report["negative_control"] = ready.json()["negative_control"]
+        assert report["negative_control"]["verdict"]["accepted"] is False
         for phase in (["restored"] if restored else ["fresh", "repeat"]):
             rows = await asyncio.gather(*(call(i, "design", models[(i // 2) % 2]) for i in range(8)))
             counts = dict(Counter(row["cache"] for row in rows))
