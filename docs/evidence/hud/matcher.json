@@ -1,0 +1,37 @@
+{
+  "model": "EmbeddingGemma-300M quantized ONNX CPU",
+  "cases_sha256": "fb990555da7700d4405545fa518ee04545af076408e608e4743a6d3fba9d6f21",
+  "rows": [
+    {
+      "bindings": {
+        "headline": "logbook",
+        "stage": "sky",
+        "action": "controls"
+      },
+      "verified_regions": 3,
+      "model_ms": 765,
+      "margin": 0.4114
+    },
+    {
+      "bindings": {
+        "headline": "logbook",
+        "stage": "sky",
+        "action": "controls"
+      },
+      "verified_regions": 3,
+      "model_ms": 178,
+      "margin": 0.3714
+    }
+  ],
+  "canonical_handoff": {
+    "bindings": {
+      "headline": "logbook",
+      "stage": "sky",
+      "action": "controls"
+    },
+    "verified_regions": 3,
+    "model_ms": 271,
+    "margin": 0.5198,
+    "rendered": true
+  }
+}

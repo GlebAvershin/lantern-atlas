@@ -28,7 +28,7 @@ python studio/hud/compare.py "$GAME" /tmp/qwen.json --model qwen \
   --weights-sha256 74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db
 ```
 
-A second benchmark uses the local alias `DeepSeek-R1-Distill-Qwen-1.5B-Q4_K_M`. Use llama.cpp b12578 with `--reasoning off`, that alias, its GGUF file and a spare loopback port. Set `HUD_LLAMA_PORT` when running compare.py. The Q4_K_M file has SHA-256 `1741e5b2d062b07acf048bf0d2c514dadf2a48f94e2b4aa0cfe069af3838ee2f`. [Weights](https://huggingface.co/bartowski/DeepSeek-R1-Distill-Qwen-1.5B-GGUF)
+A second benchmark uses the local alias `DeepSeek-R1-Distill-Qwen-1.5B-Q4_K_M`. Use llama.cpp b12578 with `--reasoning-budget 0`, that alias, its GGUF file and a spare loopback port. Set `HUD_LLAMA_PORT` when running compare.py. With the default thinking budget the first 64-token trial ended with no structured answer. The zero budget preserves the same 64-token cap for the returned JSON. The Q4_K_M file has SHA-256 `1741e5b2d062b07acf048bf0d2c514dadf2a48f94e2b4aa0cfe069af3838ee2f`. [Weights](https://huggingface.co/bartowski/DeepSeek-R1-Distill-Qwen-1.5B-GGUF)
 
 ## Inspect a completed job
 
@@ -41,3 +41,12 @@ The archive includes app.yaml for Databricks Apps, using the runtime port and an
 The default job uses local open weights. With an independently provisioned endpoint, author.py also accepts `--route bedrock --model MODEL_ID` via the AWS SDK credential chain, or `--route databricks --model ENDPOINT_NAME` with DATABRICKS_HOST and DATABRICKS_TOKEN. The latter targets a workspace serving endpoint. Gateway policies, billing and permissions belong to that workspace. Provider contracts run offline with Botocore Stubber and HTTPX MockTransport. [Routes](routes.py) · [Tests](check_routes.py)
 
 A separate stdio MCP server offers three fixed, read-only release resources. Its operator binds the process to one game. GitHub reads the selected public Actions run with STUDIO_PROJECT and HUD_RUN_ID. The Sentry reader requires SENTRY_ORG, SENTRY_PROJECT_ID and SENTRY_READ_TOKEN and returns level counts for one page of up to 20 issues. The Amplitude reader uses AMPLITUDE_API_KEY and AMPLITUDE_SECRET_KEY for the selected game and aggregates one event over the previous UTC date. External credentials belong in the process environment. The evidence records which responses came from a hosted service and which came from an offline fixture. [Server](../agents/signal_context.py) · [MCP read and contract checks](../agents/check_signals.py) · [Sentry issues](https://docs.sentry.io/api/events/) · [Amplitude Dashboard API](https://amplitude.com/docs/apis/analytics/dashboard-rest)
+
+## Route for a known catalogue
+
+The alternative author uses the existing quantized CPU EmbeddingGemma matcher. It maximizes the sum of similarities over all six distinct assignments. Cached component embeddings are reused within the process. Run the command below with the model snapshot described in the [original matcher experiment](../../HUD-experiment.md). It scores the two extra briefs blind and checks the canonical handoff over MCP before writing the HTML. See [the agent skill](../../.agents/skills/responsive-hud/SKILL.md).
+
+```sh
+uv run --script studio/hud/match.py "$GAME" /tmp/matcher.json \
+  --snapshot "$EMBEDDING_SNAPSHOT" --screen /tmp/matched-screen.html
+```
