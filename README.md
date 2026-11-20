@@ -20,6 +20,13 @@ Click or tap a lantern. Hover to preview the affected stations. Tab to the board
 | Review and support | A read-only GitHub MCP resource supplied PR context to a model. A missing move-history checkpoint was reproduced in Godot, fixed and covered by a reopen-and-undo regression. Sentry and Amplitude SDKs were exercised with a local receiver on recorded development events. | [Review](evidence/nightwatch-review.json) · [Regression](studio/check_game.gd) · [SDK evidence](evidence/nightwatch-telemetry.json) |
 | Cloud execution | A standard GitHub-hosted Linux runner started two CPU inference servers and the gateway, checked the level candidates and exercised the cache. The runner stops after the job. Browser gameplay is hosted separately on GitHub Pages. | [Workflow](.github/workflows/nightwatch.yml) · [Measured run](https://github.com/GlebAvershin/lantern-atlas/actions/runs/44767485555) |
 
+## More game engineering work
+
+| Project | What to inspect |
+| --- | --- |
+| Blackout Freight | A first-shift compass shipped to a Roblox closed test. Follow an accepted battery delivery from the client HUD to the server-side experiment and its QA events. [Gameplay and release evidence](https://github.com/GlebAvershin/blackout-freight/blob/main/docs/portfolio-release-2026-11-16.md) |
+| Soccerpoly | A bilingual cup event ships from a validated catalogue. See how a later design tool handles a model-proposed payout that passes the economy rules but misses the designer’s target. [Shipped event](https://github.com/GlebAvershin/Soccerpoly/blob/main/docs/RELEASE.md) · [Designer workflow](https://github.com/GlebAvershin/Soccerpoly/blob/main/docs/CUP-TRIAL.md) |
+
 ## Reproduce the game checks
 
 From this repository, using Godot 4.5.1, Python 3 and a C++17 compiler, run:
