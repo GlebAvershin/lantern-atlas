@@ -1,0 +1,118 @@
+{
+  "run": "https://github.com/GlebAvershin/lantern-atlas/actions/runs/44799346971",
+  "server_slots": 2,
+  "games_submitted_concurrently": 4,
+  "benchmark": {
+    "project": "Lantern Atlas",
+    "model": "Kimi-VL-A3B-Instruct.Q3_K_S",
+    "weights_sha256": "ac24c61aa01cee11cb0cfab8b497bd0f14276ec9b16601022a7b581ca8c4516a",
+    "expected": {
+      "headline": "logbook",
+      "stage": "sky",
+      "action": "controls"
+    },
+    "cases_sha256": "fb990555da7700d4405545fa518ee04545af076408e608e4743a6d3fba9d6f21",
+    "rows": [
+      {
+        "instructions": {
+          "headline": "Where am I in the voyage?",
+          "stage": "Touch a relay to move the light.",
+          "action": "I made a mistake and want to rewind."
+        },
+        "baseline": {
+          "headline": "controls",
+          "stage": "logbook",
+          "action": "sky"
+        },
+        "model": {
+          "headline": "logbook",
+          "stage": "controls",
+          "action": "controls"
+        },
+        "baseline_correct": 0,
+        "model_correct": 2,
+        "baseline_us": 201,
+        "model_ms": 27297,
+        "tokens": 385
+      },
+      {
+        "instructions": {
+          "headline": "Put the voyage title first.",
+          "stage": "Use the centre for the night sky puzzle.",
+          "action": "Offer the player a nudge or take-back below."
+        },
+        "baseline": {
+          "headline": "controls",
+          "stage": "logbook",
+          "action": "sky"
+        },
+        "model": {
+          "headline": "logbook",
+          "stage": "sky",
+          "action": "controls"
+        },
+        "baseline_correct": 0,
+        "model_correct": 3,
+        "baseline_us": 88,
+        "model_ms": 32289,
+        "tokens": 387
+      }
+    ]
+  },
+  "handoff": {
+    "project": "Lantern Atlas",
+    "screen": "Nightwatch",
+    "route": "llama",
+    "requested_model": "Kimi-VL-A3B-Instruct.Q3_K_S",
+    "game_revision": "d8abc062398827290d2152ddfc78afc6ffa5dbbc",
+    "brief_sha256": "d37aff5f218ff70c4c439be4588decb322aaa3371add9492f1f009aabccc884a",
+    "bindings": {
+      "headline": "logbook",
+      "stage": "sky",
+      "action": "controls"
+    },
+    "negative_control": {
+      "headline": "sky",
+      "stage": "controls",
+      "action": "logbook"
+    },
+    "rejected_control_regions": [
+      "headline",
+      "stage",
+      "action"
+    ],
+    "trace": [
+      {
+        "region": "headline",
+        "component": "logbook",
+        "origin": "inference",
+        "tokens": 139,
+        "accepted": true
+      },
+      {
+        "region": "stage",
+        "component": "controls",
+        "origin": "inference",
+        "tokens": 123,
+        "accepted": false
+      },
+      {
+        "region": "stage",
+        "component": "sky",
+        "origin": "elimination",
+        "tokens": 0,
+        "accepted": true
+      },
+      {
+        "region": "action",
+        "component": "controls",
+        "origin": "elimination",
+        "tokens": 0,
+        "accepted": true
+      }
+    ],
+    "model_calls": 2,
+    "inference_tokens": 262,
+    "authoring_ms": 24722
+  }
+}

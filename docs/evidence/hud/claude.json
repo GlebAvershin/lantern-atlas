@@ -1,0 +1,44 @@
+{
+  "client": "Google Antigravity CLI",
+  "client_version": "1.5.13",
+  "additional_credits_enabled": false,
+  "requested_model": "claude-sonnet-4-6",
+  "origin": "account_inference",
+  "brief_sha256": "16830060c0834b3b354474447d734b6af34acc5130a2322c4ef7a9202f20e03f",
+  "elapsed_ms": 41866,
+  "answer": {
+    "choice": "logbook-sky-controls",
+    "reason": "Controls (undo/hint) satisfies the thumb-reach action rule, logbook (chapter ID) satisfies the headline rule, and sky (lanterns/relays) satisfies the largest-region stage rule."
+  },
+  "bindings": {
+    "headline": "logbook",
+    "stage": "sky",
+    "action": "controls"
+  },
+  "mcp_acceptance": {
+    "headline": true,
+    "stage": true,
+    "action": true
+  },
+  "attempts": [
+    {
+      "origin": "account_inference",
+      "brief_sha256": "16830060c0834b3b354474447d734b6af34acc5130a2322c4ef7a9202f20e03f",
+      "elapsed_ms": 41866,
+      "answer": {
+        "choice": "logbook-sky-controls",
+        "reason": "Controls (undo/hint) satisfies the thumb-reach action rule, logbook (chapter ID) satisfies the headline rule, and sky (lanterns/relays) satisfies the largest-region stage rule."
+      },
+      "bindings": {
+        "headline": "logbook",
+        "stage": "sky",
+        "action": "controls"
+      },
+      "mcp_acceptance": {
+        "headline": true,
+        "stage": true,
+        "action": true
+      }
+    }
+  ]
+}
