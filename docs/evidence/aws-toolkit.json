@@ -1,0 +1,37 @@
+{
+  "tool": "aws___run_script",
+  "plugin": {
+    "name": "aws-core",
+    "version": "1.3.0",
+    "proxy": "mcp-proxy-for-aws-cli==1.8.0"
+  },
+  "client": "Codex app-server",
+  "endpoint": "https://aws-mcp.eu-central-1.api.aws/mcp",
+  "account_plan": "FREE / ACTIVE",
+  "checked_utc": "2026-11-20T21:44:22.666427+00:00",
+  "source": "docs/evidence/failover-live.json",
+  "source_sha256": "0425d59365bcc97faffabf813cad2d1d9309914ec71a591c1063ec2839404235",
+  "payload_sha256": "be9c8f79d762a70d88200072ed5290de133518ba963b754a131c0f6cce8a3f48",
+  "script_sha256": "cd0dc8911bf01be0d198171d2d87a13faf531a77783287974fb73c805ea11d95",
+  "status": "success",
+  "resource_api_calls": 0,
+  "result": {
+    "actions": {
+      "both-down/cached": "serve_cache",
+      "both-down/fresh": "pause_generation",
+      "model-outage/cached_alternate": "serve_cache",
+      "model-outage/interrupted": "use_alternate",
+      "model-outage/pinned_primary": "pause_generation",
+      "model-outage/warm_primary": "serve_cache",
+      "model-recovery/repeat_other_replica": "serve_cache",
+      "model-recovery/retry_same_request": "use_primary"
+    },
+    "generation_tokens": {
+      "smol": 358,
+      "qwen": 340
+    },
+    "cache_hits_with_tokens": [],
+    "retry_after_seconds": 5
+  },
+  "local_cross_check": "passed"
+}
