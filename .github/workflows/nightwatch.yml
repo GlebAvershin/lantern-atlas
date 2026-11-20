@@ -55,3 +55,22 @@ jobs:
           for trial in json.loads((root/'candidates.json').read_text())['candidates']:
               print('*', trial['model'], trial['proposal'], trial['review'], trial['tokens'], 'tokens')
           PY
+  game:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Verify every shipping chart against the independent C++ solver
+        run: |
+          g++ -std=c++17 -O2 -Wall -Wextra -Werror studio/oracle.cpp -o "$RUNNER_TEMP/oracle"
+          ATLAS_ORACLE="$RUNNER_TEMP/oracle" python3 studio/check_catalog.py
+      - name: Run the game and checkpoint regressions in Godot
+        run: |
+          curl -fsSL --retry 3 https://github.com/godotengine/godot-builds/releases/download/4.5.1-stable/Godot_v4.5.1-stable_linux.x86_64.zip -o "$RUNNER_TEMP/godot.zip"
+          echo "02ec53d1cc7dbb9cc6355393c61b9ab43d1244751a124f10248a4802830788cd  $RUNNER_TEMP/godot.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/godot.zip" -d "$RUNNER_TEMP/godot"
+          engine="$RUNNER_TEMP/godot/Godot_v4.5.1-stable_linux.x86_64"
+          "$engine" --headless --path game --import
+          "$engine" --headless --path game --script "$PWD/studio/check_game.gd" 2>&1 | tee "$RUNNER_TEMP/game.log"
+          grep -q 'Passed: true' "$RUNNER_TEMP/game.log"
+          ! grep -E 'SCRIPT ERROR|^ERROR:|^FAILED:' "$RUNNER_TEMP/game.log"

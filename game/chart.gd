@@ -8,6 +8,7 @@ var lights := 0
 var shutters := 0
 var relay: Array = []
 var history: Array[int] = []
+var presses: Array[int] = []
 var pulses: Array[int] = []
 var left_table := {}
 var right_table := {}
@@ -32,6 +33,7 @@ func open_plate(index: int) -> void:
 	for cell in spec.shutters:
 		shutters |= 1 << int(cell)
 	history.clear()
+	presses.clear()
 	pulses.clear()
 	var allowed: Array[int] = []
 	for cell in width * width:
@@ -85,9 +87,11 @@ func tap(cell: int) -> bool:
 	if cell < 0 or cell >= pulses.size() or lights == all_lit or shutters & (1 << cell):
 		return false
 	history.append(lights)
+	presses.append(cell)
 	lights ^= pulses[cell]
 	return true
 
 func undo() -> void:
 	if not history.is_empty():
 		lights = history.pop_back()
+		presses.pop_back()

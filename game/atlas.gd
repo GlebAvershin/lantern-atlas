@@ -29,6 +29,7 @@ var voyage_progress := Label.new()
 var layout := VBoxContainer.new()
 var split := BoxContainer.new()
 var cover := TextureRect.new()
+var course := Control.new()
 var panel := PanelContainer.new()
 var voice := AudioStreamPlayer.new()
 var reveal: Tween
@@ -89,11 +90,32 @@ func build_cover() -> void:
 	label_style(title,43,PAPER,true)
 	cover.add_child(title)
 	title.position = Vector2(22,14)
+	cover.add_child(course)
+	course.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	course.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
+	course.offset_left = 24
+	course.offset_right = -24
+	course.offset_top = -68
+	course.offset_bottom = -45
+	course.draw.connect(draw_course)
 	label_style(voyage_progress,14,PAPER)
 	cover.add_child(voyage_progress)
 	voyage_progress.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_WIDE)
 	voyage_progress.offset_left = 24
 	voyage_progress.offset_top = -44
+
+func draw_course() -> void:
+	var count := chart.charts.size()
+	var width := minf(course.size.x,260)
+	var y := course.size.y*0.5
+	course.draw_line(Vector2(5,y),Vector2(width-5,y),Color("#87979a"),1.5,true)
+	for i in count:
+		var x := lerpf(5,width-5,i/float(count-1))
+		var pos := Vector2(x,y)
+		course.draw_circle(pos,4.5,GOLD if logbook.best.has(chart.charts[i].name) else DEEP)
+		course.draw_arc(pos,4.5,0,TAU,24,PAPER,1,true)
+		if i == chart.plate:
+			course.draw_arc(pos,8,0,TAU,32,GOLD,1.5,true)
 
 func _ready() -> void:
 	add_child(split)
@@ -158,7 +180,7 @@ func _ready() -> void:
 	voice.volume_db = -7
 	get_window().size_changed.connect(fit_window)
 	fit_window()
-	open_plate(clampi(logbook.chapter,0,unlocked()))
+	open_plate(clampi(logbook.chapter,0,unlocked()),true)
 
 func fit_window() -> void:
 	var portrait := get_window().size.x < get_window().size.y
@@ -210,10 +232,22 @@ func toggle_option(id: int) -> void:
 			panel.modulate.a = 1
 	logbook.save()
 
-func open_plate(index: int) -> void:
-	chart.open_plate(index)
-	logbook.chapter = index
+func checkpoint() -> void:
+	logbook.sequence = chart.presses.duplicate()
 	logbook.save()
+
+func open_plate(index: int, resume := false) -> void:
+	chart.open_plate(index)
+	var spec: Dictionary = chart.charts[index]
+	var revision := JSON.stringify([spec.name,spec.width,spec.lights,spec.relay,spec.shutters])
+	if resume and logbook.revision == revision:
+		for move in logbook.sequence:
+			if typeof(move) != TYPE_INT or not chart.tap(move):
+				chart.open_plate(index)
+				break
+	logbook.revision = revision
+	logbook.chapter = index
+	checkpoint()
 	sky.clear_feedback()
 	sky.reduced = logbook.reduced
 	refresh()
@@ -235,7 +269,7 @@ func play_move(cell: int) -> void:
 	if won:
 		var key: String = chart.charts[chart.plate].name
 		logbook.best[key] = mini(chart.history.size(),logbook.best.get(key,chart.history.size()))
-		logbook.save()
+	checkpoint()
 	if not logbook.quiet:
 		voice.stream = ARRIVAL if won else (RELAY if cell in chart.relay else PULSE)
 		voice.play()
@@ -243,6 +277,7 @@ func play_move(cell: int) -> void:
 
 func undo_move() -> void:
 	chart.undo()
+	checkpoint()
 	sky.clear_feedback()
 	refresh()
 
@@ -268,6 +303,7 @@ func refresh() -> void:
 	var solved := chart.lights == chart.all_lit
 	stats.text = "CHART   %02d  /  %02d" % [chart.plate+1,chart.charts.size()]
 	heading.text = spec.name
+	course.queue_redraw()
 	voyage_progress.text = "Nightwatch   /   %d of %d charts lit" % [logbook.best.size(),chart.charts.size()]
 	var count := chart.history.size()
 	counter.text = "%d %s     ·     Par %d" % [count,"move" if count == 1 else "moves",int(spec.par)]

@@ -28,6 +28,7 @@ func run() -> void:
 	var game = load("res://atlas.tscn").instantiate()
 	var path := "user://nightwatch-test-%d.cfg" % OS.get_process_id()
 	game.logbook = game.Logbook.new(path)
+	game.logbook.quiet = true
 	root.add_child(game)
 	current_scene = game
 	await process_frame
@@ -80,7 +81,17 @@ func run() -> void:
 	verify(game.sky.cursor == 15, "keyboard reaches last station on large board")
 	key(game,KEY_SPACE)
 	verify(game.chart.history.size() == 1,"keyboard pulse")
+	var checkpoint: int = game.chart.lights
+	var second = load("res://atlas.tscn").instantiate()
+	second.logbook = game.Logbook.new(path)
+	root.add_child(second)
+	verify(second.chart.lights == checkpoint and second.chart.history.size() == 1,"quit mid-chart and resume moves and lights")
+	verify(second.chart.history.size() > 0,"resumed move can be undone")
+	second.undo_move()
+	verify(second.chart.lights == int(second.chart.charts[7].lights),"undo after reopening")
+	second.queue_free()
 	game.toggle_option(1)
+	game.toggle_option(0)
 	game.toggle_option(0)
 	var reopened = game.Logbook.new(path)
 	verify(reopened.reduced and reopened.quiet and reopened.chapter == 7,"settings and chapter survive reopening")
@@ -95,6 +106,10 @@ func run() -> void:
 				restored ^= c.pulses[bit]
 		verify(restored == 511,"every harbour state solvable")
 		total_states += 1
+	game.voice.stop()
+	game.queue_free()
+	await process_frame
+	await create_timer(.12).timeout
 	DirAccess.remove_absolute(path)
 	print("Nightwatch: 8 charts, ",total_states," harbour states, relay, shutters, hints, save, restart, keyboard and replay. Passed: ",not failed)
 	quit(1 if failed else 0)
