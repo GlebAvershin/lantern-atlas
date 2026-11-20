@@ -1,5 +1,7 @@
 # Lantern Atlas · Nightwatch
 
+[Технологии игры, AI-инструменты и результаты облачных проверок](docs/TECHNOLOGIES.md)
+
 [Play in your browser](https://glebavershin.github.io/lantern-atlas/) · [Watch the 16-second gameplay clip](evidence/nightwatch.mp4) · [Read the engineering case study (RU)](docs/NIGHTWATCH.md) · [Open the pull request](https://github.com/GlebAvershin/lantern-atlas/pull/1)
 
 ![Crescent Passage. Two shuttered stations receive light, and a pair of marked relays connect opposite sides of the chart.](evidence/nightwatch.png)

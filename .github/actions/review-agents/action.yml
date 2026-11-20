@@ -1,0 +1,29 @@
+name: Run game review agents in Kubernetes
+description: Run two model routes against the checked-out game's MCP verifier
+inputs:
+  project:
+    required: true
+    description: Game contract (atlas, freight or soccer)
+runs:
+  using: composite
+  steps:
+    - uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990
+    - shell: bash
+      env:
+        PROJECT: ${{ inputs.project }}
+      run: |
+        set -euo pipefail
+        if ! command -v kind >/dev/null; then
+          curl -fsSLo "$RUNNER_TEMP/kind" https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64
+          sum=$(curl -fsSL https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64.sha256sum | cut -d' ' -f1)
+          echo "$sum  $RUNNER_TEMP/kind" | sha256sum -c -
+          chmod +x "$RUNNER_TEMP/kind"
+          export PATH="$RUNNER_TEMP:$PATH"
+        fi
+        platform=$(cd "$GITHUB_ACTION_PATH/../../.." && pwd)
+        "$platform/studio/agents/cloud.sh" "$platform" "$GITHUB_WORKSPACE" "$PROJECT" "$RUNNER_TEMP/review-evidence"
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      with:
+        name: game-agent-evidence
+        path: ${{ runner.temp }}/review-evidence
+        if-no-files-found: error

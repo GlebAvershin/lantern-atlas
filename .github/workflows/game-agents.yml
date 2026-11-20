@@ -1,0 +1,13 @@
+name: Game review agents
+on: [pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 22
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - uses: ./.github/actions/review-agents
+        with:
+          project: atlas
