@@ -31,6 +31,13 @@ def context() -> dict:
             "sha256": hashlib.sha256(source.encode()).hexdigest(), "source": source[:4500]}
 
 
+@server.resource("atlas://release/nightwatch")
+def release_evidence() -> dict:
+    """Recorded authoring measurements and the checkpoint retest, captured with the two SDKs."""
+    path = Path(__file__).resolve().parents[1] / "evidence/nightwatch-telemetry.json"
+    return json.loads(path.read_text())
+
+
 async def review(output):
     params = StdioServerParameters(command=sys.executable, args=[__file__, "--serve"])
     async with stdio_client(params) as (r,w), ClientSession(r,w) as session:

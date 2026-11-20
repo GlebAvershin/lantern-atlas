@@ -2,6 +2,7 @@ config_version=5
 
 [application]
 config/name="Lantern Atlas"
+config/icon="res://art/lantern-icon.png"
 run/main_scene="res://atlas.tscn"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 

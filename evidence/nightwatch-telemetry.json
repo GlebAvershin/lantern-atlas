@@ -1,0 +1,32 @@
+{
+  "source": "release QA and authoring evidence replay",
+  "destination": "local SDK receiver",
+  "sentry_envelopes": [
+    {
+      "message": "FAILED: quit mid-chart and resume moves and lights",
+      "level": "error",
+      "release": "nightwatch-review-10ae2f2"
+    }
+  ],
+  "amplitude_events": [
+    {
+      "event": "nightwatch.chart_reviewed",
+      "properties": {
+        "accepted": true,
+        "model": "qwen",
+        "par": 6,
+        "tokens": 314
+      }
+    },
+    {
+      "event": "nightwatch.chart_reviewed",
+      "properties": {
+        "accepted": true,
+        "model": "smol",
+        "par": 6,
+        "tokens": 314
+      }
+    }
+  ],
+  "checkpoint_retest_passed": true
+}
