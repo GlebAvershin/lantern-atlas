@@ -1,0 +1,7 @@
+{
+  "brief": "Create the last chart in a coastal voyage. On a 4 by 4 grid, tapping a lantern toggles itself and adjacent orthogonal neighbours. Tapping a relay also toggles its distant partner. Two shuttered stations receive light but cannot be pressed. Choose a relay and a scramble design whose minimum is at least five moves and which requires a relay for an optimal solution. A designer approves the final chart. Give the chosen route a short original English maritime title (1 to 4 words).",
+  "shutters": [5,10],
+  "relay_pairs": {"horizon":[0,15],"strait":[3,12],"channel":[1,14]},
+  "routes":{"crossing":[0,2,7,8,13,15],"crescent":[1,3,6,11,14,15],"headland":[0,3,4,9,12,14],"shoal":[0,15]},
+  "min_par":5
+}

@@ -1,0 +1,3 @@
+Chart name and current chapter (logbook)
+Interactive star map (sky)
+Undo, hint and advance buttons (controls)

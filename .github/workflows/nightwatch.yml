@@ -1,0 +1,57 @@
+name: Nightwatch release verification
+on: [pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  authoring:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    env:
+      HUD_QWEN_URL: http://127.0.0.1:18081
+      HUD_SMOL_URL: http://127.0.0.1:18082
+      HUD_TOKENS: '{"ci-atlas":"atlas"}'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+      - name: Install locked tools and compile the independent solver
+        run: |
+          python3 -m venv "$RUNNER_TEMP/bootstrap"
+          "$RUNNER_TEMP/bootstrap/bin/pip" install -q uv==0.13.6
+          "$RUNNER_TEMP/bootstrap/bin/uv" sync --project studio --locked --python 3.12
+          g++ -std=c++17 -O2 -Wall -Wextra -Werror studio/oracle.cpp -o "$RUNNER_TEMP/oracle"
+      - name: Fetch two verified CPU models and inference engine
+        working-directory: ${{ runner.temp }}
+        run: |
+          curl --retry 3 -fsSL 'https://github.com/ggml-org/llama.cpp/releases/download/b12578/llama-b12578-bin-ubuntu-x64.tar.gz' -o llama.tgz
+          curl --retry 3 -fsSL 'https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct-GGUF/resolve/main/qwen2.5-0.5b-instruct-q4_k_m.gguf' -o qwen.gguf
+          curl --retry 3 -fsSL 'https://huggingface.co/HuggingFaceTB/SmolLM2-360M-Instruct-GGUF/resolve/main/smollm2-360m-instruct-q8_0.gguf' -o smol.gguf
+          sha256sum -c <<'SUMS'
+          95db6800c6321c2c64360850e8fa5ea848c65ef3850205d2aea57eb0de001ca1  llama.tgz
+          74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db  qwen.gguf
+          48ab3034d0dd401fbc721eb1df3217902fee7dab9078992d66431f09b7750201  smol.gguf
+          SUMS
+          tar -xzf llama.tgz
+      - name: Run authoring and the concurrent gateway workload
+        run: |
+          set -eu
+          export ATLAS_ORACLE="$RUNNER_TEMP/oracle"
+          server=$(find "$RUNNER_TEMP" -name llama-server -type f | head -1)
+          export LD_LIBRARY_PATH="$(dirname "$server"):${LD_LIBRARY_PATH:-}"
+          "$server" -m "$RUNNER_TEMP/qwen.gguf" --alias qwen --host 127.0.0.1 --port 18081 -c 2048 -np 1 -t 2 >"$RUNNER_TEMP/qwen.log" 2>&1 &
+          "$server" -m "$RUNNER_TEMP/smol.gguf" --alias smol --host 127.0.0.1 --port 18082 -c 2048 -np 1 -t 2 >"$RUNNER_TEMP/smol.log" 2>&1 &
+          studio/.venv/bin/uvicorn --app-dir studio service:app --host 127.0.0.1 --port 18083 >"$RUNNER_TEMP/gateway.log" 2>&1 &
+          for port in 18081 18082; do
+            curl -fsS --retry 20 --retry-all-errors --retry-delay 2 "http://127.0.0.1:$port/health" || { tail -20 "$RUNNER_TEMP/"*.log; exit 1; }
+          done
+          studio/.venv/bin/python studio/author.py --output "$RUNNER_TEMP/candidates.json"
+          studio/.venv/bin/python studio/probe.py --output "$RUNNER_TEMP/cloud.json"
+          python3 - "$RUNNER_TEMP" >> "$GITHUB_STEP_SUMMARY" <<'PY'
+          import json, pathlib, sys
+          root = pathlib.Path(sys.argv[1])
+          r = json.loads((root / 'cloud.json').read_text())
+          for phase in ['fresh','warm']:
+              v = r[phase]
+              print(f"* {phase}: {v['outcomes']}, client p95 {v['p95_ms']} ms, {v['inference_tokens']} tokens")
+          print("* HUD exact order:",r["matches_design"])
+          for trial in json.loads((root/'candidates.json').read_text())['candidates']:
+              print('*', trial['model'], trial['proposal'], trial['review'], trial['tokens'], 'tokens')
+          PY
