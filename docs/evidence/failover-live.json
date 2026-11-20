@@ -1,0 +1,186 @@
+{
+  "workflow_run": "https://github.com/GlebAvershin/lantern-atlas/actions/runs/44811705071",
+  "revision": "4e8ca2b1b7d79defd2893cfe01814a0db3006633",
+  "model-outage": {
+    "busy_slot_confirmed": true,
+    "interrupted": {
+      "team": "design",
+      "model": "qwen",
+      "choices": [
+        "coastal_route"
+      ],
+      "replica": 0,
+      "status": 200,
+      "client_ms": 312.01,
+      "served_model": "smol",
+      "fallback": true,
+      "cache": "miss",
+      "choice": "coastal_route",
+      "worker": "game-review-7d45c6999d-hcj2g",
+      "tokens": 358,
+      "attempts": 1
+    },
+    "warm_primary": {
+      "team": "design",
+      "model": "qwen",
+      "choices": [
+        "short_crossing",
+        "coastal_route"
+      ],
+      "replica": 1,
+      "status": 200,
+      "client_ms": 18.6,
+      "served_model": "qwen",
+      "fallback": false,
+      "cache": "hit",
+      "choice": "coastal_route",
+      "worker": "game-review-7d45c6999d-vxj2x",
+      "tokens": 0,
+      "attempts": 2
+    },
+    "pinned_primary": {
+      "team": "qa",
+      "model": "qwen",
+      "choices": [
+        "coastal_route"
+      ],
+      "replica": 1,
+      "status": 502,
+      "client_ms": 21.57
+    },
+    "cached_alternate": {
+      "team": "design",
+      "model": "qwen",
+      "choices": [
+        "coastal_route"
+      ],
+      "replica": 1,
+      "status": 200,
+      "client_ms": 27.32,
+      "served_model": "smol",
+      "fallback": true,
+      "cache": "hit",
+      "choice": "coastal_route",
+      "worker": "game-review-7d45c6999d-vxj2x",
+      "tokens": 0,
+      "attempts": 1
+    }
+  },
+  "both-down": {
+    "fresh": {
+      "team": "qa",
+      "model": "qwen",
+      "choices": [
+        "crescent_passage"
+      ],
+      "replica": 1,
+      "status": 503,
+      "client_ms": 33.68,
+      "retry_after": "5"
+    },
+    "cached": {
+      "team": "design",
+      "model": "qwen",
+      "choices": [
+        "short_crossing",
+        "coastal_route"
+      ],
+      "replica": 0,
+      "status": 200,
+      "client_ms": 9.38,
+      "served_model": "qwen",
+      "fallback": false,
+      "cache": "hit",
+      "choice": "coastal_route",
+      "worker": "game-review-7d45c6999d-hcj2g",
+      "tokens": 0,
+      "attempts": 2
+    }
+  },
+  "model-recovery": {
+    "retry_same_request": {
+      "team": "design",
+      "model": "qwen",
+      "choices": [
+        "coastal_route"
+      ],
+      "replica": 1,
+      "status": 200,
+      "client_ms": 1677.15,
+      "served_model": "qwen",
+      "fallback": false,
+      "cache": "miss",
+      "choice": "coastal_route",
+      "worker": "game-review-7d45c6999d-vxj2x",
+      "tokens": 340,
+      "attempts": 1
+    },
+    "repeat_other_replica": {
+      "team": "design",
+      "model": "qwen",
+      "choices": [
+        "coastal_route"
+      ],
+      "replica": 0,
+      "status": 200,
+      "client_ms": 10.36,
+      "served_model": "qwen",
+      "fallback": false,
+      "cache": "hit",
+      "choice": "coastal_route",
+      "worker": "game-review-7d45c6999d-hcj2g",
+      "tokens": 0,
+      "attempts": 1
+    }
+  },
+  "mixed-load": {
+    "invalid_requests": [
+      {
+        "team": "design",
+        "model": "qwen",
+        "choices": [
+          "unknown"
+        ],
+        "replica": 0,
+        "status": 422,
+        "client_ms": 18.87
+      },
+      {
+        "team": "qa",
+        "model": "smol",
+        "choices": [
+          "coastal_route",
+          "coastal_route"
+        ],
+        "replica": 1,
+        "status": 422,
+        "client_ms": 4.69
+      }
+    ],
+    "all": {
+      "n": 120,
+      "p95_ms": 2616.67,
+      "tokens": 5934,
+      "cache": {
+        "miss": 12,
+        "hit": 108
+      }
+    },
+    "first_batch": {
+      "n": 12,
+      "p95_ms": 5415.16,
+      "tokens": 5934,
+      "cache": {
+        "miss": 12
+      }
+    },
+    "repeated": {
+      "n": 108,
+      "p95_ms": 45.63,
+      "tokens": 0,
+      "cache": {
+        "hit": 108
+      }
+    }
+  }
+}

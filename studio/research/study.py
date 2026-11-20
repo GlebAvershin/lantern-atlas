@@ -1,30 +1,33 @@
-"""Classify partial and total model outages using targeted probes from a real CI replay."""
+"""Classify observed review responses across a real interruption, total outage and recovery."""
 import json
 
-SOURCE = ["docs/evidence/mixed-recovery.json"]
-COLUMNS = "scenario,probe,status"
-OPTIONS = ["use_alternate", "pause_generation", "use_primary"]
-QUESTION = ("Choose use_primary if its fresh probe succeeds. Otherwise choose use_alternate if its "
-            "fresh probe succeeds. If both fresh probes fail, pause generation. A cache hit "
-            "only proves previously generated content can be read. Status values are HTTP codes.")
-CONTROL = "both_fresh_failed"
+SOURCE = ["docs/evidence/failover-live.json"]
+COLUMNS = "scenario,status,cache_hit,alternate"
+OPTIONS = ["serve_cache", "use_alternate", "use_primary", "pause_generation"]
+QUESTION = ("Classify the observed response. Non-200 means pause_generation for that request. "
+            "For 200, a cache hit means serve_cache regardless of model. On a miss, choose "
+            "use_alternate if alternate=1, otherwise use_primary.")
+CONTROL = "both_down_cold"
 
 
 def samples(root):
     run = json.loads((root / SOURCE[0]).read_text())
-    outage = run["model-outage"]
-    original = {"fresh_primary": outage["uncached_during_outage"]["status"],
-                "cached_primary": outage["cached_during_outage"]["status"],
-                "fresh_alternate": outage["other_model_during_outage"]["status"]}
-    for scenario, probes in [("recorded_outage", original),
-                             (CONTROL, {**original, "fresh_alternate": 502}),
-                             ("primary_restored_replay", {**original, "fresh_primary":
-                                  run["model-recovery"]["retry_same_request"]["status"]})]:
-        for kind, status in probes.items():
-            yield scenario, kind, status
+    for phase, name, case in [
+        ("model-outage", "interrupted", "inflight_fallback"),
+        ("model-outage", "cached_alternate", "alternate_warm_other_replica"),
+        ("model-outage", "pinned_primary", "pinned_primary_down"),
+        ("both-down", "fresh", CONTROL),
+        ("both-down", "cached", "both_down_warm"),
+        ("model-recovery", "retry_same_request", "primary_restored"),
+        ("model-recovery", "repeat_other_replica", "restored_warm_other_replica"),
+    ]:
+        response = run[phase][name]
+        yield case, response["status"], int(response.get("cache") == "hit"), int(bool(response.get("fallback")))
 
 
 def decision(metrics):
-    if metrics["fresh_primary"] == 200:
-        return OPTIONS[2]
-    return OPTIONS[0] if metrics["fresh_alternate"] == 200 else OPTIONS[1]
+    if metrics["status"] != 200:
+        return "pause_generation"
+    if metrics["cache_hit"]:
+        return "serve_cache"
+    return "use_alternate" if metrics["alternate"] else "use_primary"
