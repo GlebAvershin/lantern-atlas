@@ -3,9 +3,27 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ['studio/hud-brief.json', 'studio/hud/**', '.github/actions/author-hud/**', '.github/workflows/hud-proof.yml']
+    paths:
+      - studio/hud-brief.json
+      - studio/hud-evaluation.json
+      - .github/workflows/hud-proof.yml
+      - game/art/northwatch.jpg
+      - game/atlas.gd
+      - studio/hud/**
+      - .github/actions/author-hud/**
+      - studio/agents/*signals.py
+      - studio/agents/signal_context.py
   pull_request:
-    paths: ['studio/hud-brief.json', 'studio/hud/**', '.github/actions/author-hud/**', '.github/workflows/hud-proof.yml']
+    paths:
+      - studio/hud-brief.json
+      - studio/hud-evaluation.json
+      - .github/workflows/hud-proof.yml
+      - game/art/northwatch.jpg
+      - game/atlas.gd
+      - studio/hud/**
+      - .github/actions/author-hud/**
+      - studio/agents/*signals.py
+      - studio/agents/signal_context.py
 permissions:
   contents: read
 jobs:

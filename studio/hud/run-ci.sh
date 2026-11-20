@@ -31,6 +31,9 @@ pid=$!
 curl -fsS --retry 45 --retry-all-errors --retry-delay 1 http://127.0.0.1:18490/health
 "$py" "$studio/author.py" "$game" "$out" --model qwen
 "$py" "$studio/measure.py" "$game" "$out"
+"$py" "$studio/compare.py" "$game" "$out/qwen.json" --model qwen \
+  --weights-sha256 74a4da8c9fdbcd15bd1f6d01d621410d31c6fc00986f5eb687824e7b93d7a9db
+PYTHONPATH="$studio/../agents" "$py" -c 'from check_signals import test_aggregates; test_aggregates()'
 # Package the same read-only app for local review or Databricks Apps.
 app="$work/review-app"
 mkdir -p "$app/proof"

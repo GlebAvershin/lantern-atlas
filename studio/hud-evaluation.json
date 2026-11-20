@@ -1,0 +1,12 @@
+[
+  {
+    "headline": "Where am I in the voyage?",
+    "stage": "Touch a relay to move the light.",
+    "action": "I made a mistake and want to rewind."
+  },
+  {
+    "headline": "Put the voyage title first.",
+    "stage": "Use the centre for the night sky puzzle.",
+    "action": "Offer the player a nudge or take-back below."
+  }
+]
