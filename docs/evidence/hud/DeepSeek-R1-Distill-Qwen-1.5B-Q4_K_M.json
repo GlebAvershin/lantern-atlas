@@ -1,0 +1,57 @@
+{
+  "project": "Lantern Atlas",
+  "model": "DeepSeek-R1-Distill-Qwen-1.5B-Q4_K_M",
+  "weights_sha256": "1741e5b2d062b07acf048bf0d2c514dadf2a48f94e2b4aa0cfe069af3838ee2f",
+  "expected": {
+    "headline": "logbook",
+    "stage": "sky",
+    "action": "controls"
+  },
+  "cases_sha256": "fb990555da7700d4405545fa518ee04545af076408e608e4743a6d3fba9d6f21",
+  "rows": [
+    {
+      "instructions": {
+        "headline": "Where am I in the voyage?",
+        "stage": "Touch a relay to move the light.",
+        "action": "I made a mistake and want to rewind."
+      },
+      "baseline": {
+        "headline": "controls",
+        "stage": "logbook",
+        "action": "sky"
+      },
+      "model": {
+        "headline": "logbook",
+        "stage": "sky",
+        "action": "controls"
+      },
+      "baseline_correct": 0,
+      "model_correct": 3,
+      "baseline_us": 73,
+      "model_ms": 1641,
+      "tokens": 388
+    },
+    {
+      "instructions": {
+        "headline": "Put the voyage title first.",
+        "stage": "Use the centre for the night sky puzzle.",
+        "action": "Offer the player a nudge or take-back below."
+      },
+      "baseline": {
+        "headline": "controls",
+        "stage": "logbook",
+        "action": "sky"
+      },
+      "model": {
+        "headline": "logbook",
+        "stage": "sky",
+        "action": "logbook"
+      },
+      "baseline_correct": 0,
+      "model_correct": 2,
+      "baseline_us": 82,
+      "model_ms": 2808,
+      "tokens": 391
+    }
+  ]
+}

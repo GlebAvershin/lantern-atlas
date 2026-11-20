@@ -1,0 +1,70 @@
+{
+  "project": "Lantern Atlas",
+  "screen": "Nightwatch",
+  "route": "llama",
+  "requested_model": "qwen",
+  "game_revision": "527cf6fb244e985b6187e34dc9554581cbc65b77",
+  "brief_sha256": "d37aff5f218ff70c4c439be4588decb322aaa3371add9492f1f009aabccc884a",
+  "bindings": {
+    "headline": "logbook",
+    "stage": "sky",
+    "action": "controls"
+  },
+  "negative_control": {
+    "headline": "sky",
+    "stage": "controls",
+    "action": "logbook"
+  },
+  "rejected_control_regions": [
+    "headline",
+    "stage",
+    "action"
+  ],
+  "trace": [
+    {
+      "region": "headline",
+      "component": "controls",
+      "origin": "inference",
+      "tokens": 153,
+      "accepted": false
+    },
+    {
+      "region": "headline",
+      "component": "sky",
+      "origin": "inference",
+      "tokens": 140,
+      "accepted": false
+    },
+    {
+      "region": "headline",
+      "component": "logbook",
+      "origin": "elimination",
+      "tokens": 0,
+      "accepted": true
+    },
+    {
+      "region": "stage",
+      "component": "controls",
+      "origin": "inference",
+      "tokens": 138,
+      "accepted": false
+    },
+    {
+      "region": "stage",
+      "component": "sky",
+      "origin": "elimination",
+      "tokens": 0,
+      "accepted": true
+    },
+    {
+      "region": "action",
+      "component": "controls",
+      "origin": "elimination",
+      "tokens": 0,
+      "accepted": true
+    }
+  ],
+  "model_calls": 3,
+  "inference_tokens": 431,
+  "authoring_ms": 1892
+}
