@@ -1,0 +1,42 @@
+{
+  "project": "Lantern Atlas",
+  "screen": "Nightwatch",
+  "colors": [
+    "192e46",
+    "efc47c"
+  ],
+  "art": "game/art/northwatch.jpg",
+  "design": {
+    "headline": "Lead with a heading identifying the chapter.",
+    "stage": "Give the lantern field the largest region.",
+    "action": "Keep the hint and undo actions within thumb reach."
+  },
+  "components": [
+    {
+      "id": "controls",
+      "title": "Chart controls",
+      "description": "Undo or request a hint.",
+      "source": "game/atlas.gd",
+      "symbol": "\"controls\":controls"
+    },
+    {
+      "id": "logbook",
+      "title": "Voyage log",
+      "description": "Identify the current chapter.",
+      "source": "game/atlas.gd",
+      "symbol": "\"logbook\":header"
+    },
+    {
+      "id": "sky",
+      "title": "Star chart",
+      "description": "Inspect the lanterns and relays.",
+      "source": "game/atlas.gd",
+      "symbol": "\"sky\":sky"
+    }
+  ],
+  "acceptance": {
+    "headline": "logbook",
+    "stage": "sky",
+    "action": "controls"
+  }
+}

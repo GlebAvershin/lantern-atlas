@@ -1,0 +1,5 @@
+boto3==1.42.47
+httpx==0.28.1
+mcp==1.26.0
+pillow==12.1.1
+playwright==1.58.0

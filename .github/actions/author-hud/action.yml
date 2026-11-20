@@ -1,0 +1,18 @@
+name: Author and measure a responsive game HUD
+description: Run one game's MCP design handoff against Qwen and Chromium.
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    - shell: bash
+      run: |
+        set -euo pipefail
+        platform=$(cd "$GITHUB_ACTION_PATH/../../.." && pwd)
+        "$platform/studio/hud/run-ci.sh" "$GITHUB_WORKSPACE" "$RUNNER_TEMP/hud-proof"
+    - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+      with:
+        name: hud-proof
+        path: ${{ runner.temp }}/hud-proof
+        if-no-files-found: error

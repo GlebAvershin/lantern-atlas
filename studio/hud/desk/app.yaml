@@ -1,0 +1,4 @@
+command: ['python', 'desk.py']
+env:
+  - name: HUD_BIND
+    value: '0.0.0.0'
