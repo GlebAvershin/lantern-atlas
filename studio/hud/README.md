@@ -10,6 +10,7 @@ Open **Actions → Responsive HUD handoff → Run workflow** in any of the four 
 | --- | --- |
 | authoring.json | Choices, rejections, forced completions, inference tokens and time from the first region to the last MCP verification |
 | geometry.json | Seven viewports, including either side of the 840 px breakpoint and short landscape. An injected 18 px action must fail the touch-target check |
+| contrast.json | Four solid foreground/background pairs from computed Chromium styles, independently checked by C++20 against a project minimum of 4.5 and a deliberately low-contrast control |
 | qwen.json | Blind first choices on two additional briefs, compared with a maximum-overlap one-to-one text matcher. The model gets all three candidates for each instruction without verifier feedback |
 | screen.html, screen.jpg | Standalone HTML handoff and its 840 × 600 Chromium capture |
 | desk-probe.json | Five concurrent HTTP reads and rejection checks against the Django proof viewer |
