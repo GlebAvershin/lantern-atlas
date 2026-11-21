@@ -25,9 +25,9 @@
 
 * 🌐 **[Играть в браузере (WebAssembly)](https://glebavershin.github.io/lantern-atlas/)** — Восемь опубликованных карт маяков.
 * 🍏 **[Скачать сборку для macOS](https://github.com/GlebAvershin/lantern-atlas/releases)** — Настольная версия.
-* 🎥 **[Видео игрового процесса Nightwatch](evidence/nightwatch.mp4)** — Подсказки решателя и система чекпоинтов.
+* 🎥 **[Видео игрового процесса (MP4)](https://raw.githubusercontent.com/GlebAvershin/lantern-atlas/main/evidence/nightwatch.mp4)** — Запись прохождения карты и работы решателя.
 * 📑 **[Инженерный отчёт и архитектура шлюза](docs/TECHNOLOGIES.ru.md)** — Журналы K8s отказоустойчивости, Circuit Breaker и FinOps.
-* 🐞 **[Разбор регрессии сохранений Nightwatch](docs/NIGHTWATCH.md)** — Локализация бага чекпоинта с помощью AI-ревью.
+* 🐞 **[Разбор регрессии сохранений Nightwatch](docs/NIGHTWATCH.ru.md)** — Локализация бага чекпоинта с помощью AI-ревью.
 
 ---
 
@@ -42,6 +42,12 @@ Lantern Atlas выступает демонстратором отказоуст
 4. **Отказоустойчивость в Kubernetes:** координация реплик через PostgreSQL (`pg_advisory_xact_lock`), гарантирующая нулевой простой при rolling restart.
 5. **Семантический RAG-движок:** векторный поиск по технической документации, исключающий галлюцинации моделей о параметрах шлюза.
 6. **Алгоритмический C++17 солвер:** A*/BFS оракул, математически доказывающий минимальную длину решения (от 1 до 6 ходов) для каждой карты.
+
+---
+
+<p align="center">
+  <img src="evidence/nightwatch-preview.gif" alt="Lantern Atlas Демонстрация геймплея" width="85%" style="border-radius: 6px;" />
+</p>
 
 ---
 

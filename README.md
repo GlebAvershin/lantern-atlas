@@ -25,7 +25,7 @@
 
 * 🌐 **[Play in Browser (WebAssembly)](https://glebavershin.github.io/lantern-atlas/)** — Eight published lighthouse charts.
 * 🍏 **[Download macOS App Build](https://github.com/GlebAvershin/lantern-atlas/releases)** — Standalone desktop build.
-* 🎥 **[Watch Nightwatch Demonstration Video](evidence/nightwatch.mp4)** — Solver hint & checkpoint walkthrough.
+* 🎥 **[Watch Gameplay Demonstration (MP4)](https://raw.githubusercontent.com/GlebAvershin/lantern-atlas/main/evidence/nightwatch.mp4)** — Solver hint & checkpoint walkthrough video.
 * 📑 **[Engineering Architecture & Gateway Dossier](docs/TECHNOLOGIES.md)** — K8s failover logs, circuit breaker benchmarks, and FinOps data.
 * 🐞 **[Nightwatch Checkpoint Regression Analysis](docs/NIGHTWATCH.md)** — AI code review reproduction of savegame bug.
 
@@ -42,6 +42,12 @@ Lantern Atlas serves as a high-performance **AI Platform Infrastructure & Micros
 4. **Kubernetes Multi-Replica Resilience:** PostgreSQL coordination (`pg_advisory_xact_lock`) guaranteeing zero-downtime rolling updates.
 5. **Semantic RAG Engine:** Vector search over architecture specs, eliminating model hallucinations on platform parameters.
 6. **Algorithmic C++17 Solver:** A*/BFS oracle proving the exact minimal move solution (1 to 6 moves) for every chart.
+
+---
+
+<p align="center">
+  <img src="evidence/nightwatch-preview.gif" alt="Lantern Atlas Gameplay Preview" width="85%" style="border-radius: 6px;" />
+</p>
 
 ---
 
