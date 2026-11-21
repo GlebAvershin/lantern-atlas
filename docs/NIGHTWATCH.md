@@ -5,7 +5,7 @@
   <a href="NIGHTWATCH.ru.md"><b>Русский</b></a>
 </p>
 
-**November 20, 2026.** The technical objective was to transform a five-level puzzle prototype into a production-ready game feature while applying AI agents across the end-to-end release lifecycle. The resulting 8-chart campaign on Godot 4.5.1 is published both as a WebAssembly browser game and a native macOS application. On the final chart, players experience level geometry and UI layouts selected during automated model benchmarking runs. [Play Game](https://glebavershin.github.io/lantern-atlas/) · [Walkthrough Capture](../evidence/nightwatch.mp4)
+The technical objective of this release was to transform a five-level puzzle prototype into a production-ready game feature while applying AI agents across the end-to-end release lifecycle. The resulting 8-chart campaign on Godot 4.5.1 is published both as a WebAssembly browser game and a native macOS application. On the final chart, players experience level geometry and UI layouts selected during automated model benchmarking runs. [Play Game](https://glebavershin.github.io/lantern-atlas/) · [Walkthrough Capture](../evidence/nightwatch.mp4)
 
 ---
 

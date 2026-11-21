@@ -22,7 +22,7 @@ Every optimal move sequence was proved mathematically to have no shorter valid t
 
 ## ☁️ Cross-Service Verification via Cloud MCP Servers
 
-1. **Amplitude MCP:** Verified 8 `game.study_evaluated` events recorded on November 20, 2026 (UTC).
+1. **Amplitude MCP:** Verified 8 `game.study_evaluated` events recorded during research evaluation runs.
 2. **Sentry MCP:** Queried issue **PYTHON-8** for `solution_gap` telemetry and verified the `report_oracle` action.
 3. **Databricks MCP (`system.ai.dbsql`):** Queried level completion metrics; all 4 rows matched local SQLite calculations byte-for-byte.
 
