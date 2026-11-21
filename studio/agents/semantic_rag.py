@@ -71,7 +71,7 @@ class SimpleRAGIndex:
         ctx_text = "\n\n---\n\n".join(f"[{c['file']}]\n{c['text'][:600]}" for c in contexts)
         
         prompt = (
-            f"You are a Principal AI Platform Engineer at Playrix. Answer this technical question strictly based "
+            f"You are a Principal AI Platform Engineer. Answer this technical question strictly based "
             f"on the supplied architecture documents. Cite file names and key metrics:\n\n"
             f"Context:\n{ctx_text}\n\nQuestion: {query}\n\nAnswer in 2-3 concise sentences in Russian."
         )

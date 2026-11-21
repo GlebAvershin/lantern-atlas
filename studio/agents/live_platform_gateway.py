@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lantern Atlas Live Platform Gateway for Playrix AI Infrastructure.
+"""Lantern Atlas Live Platform Gateway for Cloud AI Infrastructure.
 
 Implements:
 - Multi-model dynamic routing (Databricks Model Serving + Fallback)

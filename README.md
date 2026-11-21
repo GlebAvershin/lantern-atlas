@@ -35,7 +35,7 @@
 
 **Lantern Atlas** is a lighthouse routing puzzle built in **Godot 4.5.1**. Players transmit beams of light across coastal archipelagoes, activating remote relays and unlocking sealed harbor stations over 8 handcrafted charts with an optimal hint solver.
 
-For Playrix's **AI Engineer (Platform)** track, Lantern Atlas serves as the core infrastructure showcase:
+Lantern Atlas serves as a high-performance **AI Platform Infrastructure & Microservices showcase**:
 1. **Resilient AI Gateway:** FastAPI microservice routing requests between cloud models (Databricks Qwen3-80B, SmolLM2, Claude, Kimi).
 2. **Circuit Breaker Pattern:** State machine (`CLOSED -> OPEN -> HALF-OPEN`) protecting external endpoints from cascading failures.
 3. **Semantic Request Deduplication:** SHA-256 fingerprinting delivering 0.05 ms cache hits and saving over 51,000 tokens on duplicate design queries.
@@ -172,5 +172,5 @@ Lantern Atlas/
 ---
 
 <p align="center">
-  <sub>Engineered for the Playrix AI Engineer (Platform) & Game AI tracks.</sub>
+  <sub>Open-source game microservices, AI platform gateway, and algorithmic solver study.</sub>
 </p>
