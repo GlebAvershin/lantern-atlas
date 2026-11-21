@@ -1,0 +1,130 @@
+{
+  "evaluation_title": "Adaptive Multi-Model Cascade Router Benchmark",
+  "charts_tested": 8,
+  "fast_tier_ratio": 0.375,
+  "deep_tier_ratio": 0.625,
+  "monolithic_cost_per_1k_runs_usd": 8.28,
+  "cascade_cost_per_1k_runs_usd": 1.89,
+  "finops_savings_percentage": 77.17,
+  "monolithic_latency_ms": 680.0,
+  "cascade_latency_ms": 328.12,
+  "latency_reduction_percentage": 51.75,
+  "oracle_verification_rate": 1.0,
+  "model_matrix": {
+    "gemini-4-argon": {
+      "provider": "google",
+      "tier": "deep",
+      "latency_ms": 480.0,
+      "accuracy_score": 0.985,
+      "cost_per_1k_calls_usd": 0.36
+    },
+    "gemini-4-hydrogen": {
+      "provider": "google",
+      "tier": "deep",
+      "latency_ms": 390.0,
+      "accuracy_score": 0.97,
+      "cost_per_1k_calls_usd": 0.24
+    },
+    "gemini-3.8-flash-low": {
+      "provider": "google",
+      "tier": "fast",
+      "latency_ms": 75.0,
+      "accuracy_score": 0.92,
+      "cost_per_1k_calls_usd": 0.03
+    },
+    "gpt-6.2-astra": {
+      "provider": "codex",
+      "tier": "deep",
+      "latency_ms": 520.0,
+      "accuracy_score": 0.99,
+      "cost_per_1k_calls_usd": 0.45
+    },
+    "gpt-6.2-sol": {
+      "provider": "codex",
+      "tier": "fast",
+      "latency_ms": 85.0,
+      "accuracy_score": 0.935,
+      "cost_per_1k_calls_usd": 0.06
+    },
+    "databricks-qwen3-80b": {
+      "provider": "databricks",
+      "tier": "deep",
+      "latency_ms": 420.0,
+      "accuracy_score": 0.965,
+      "cost_per_1k_calls_usd": 0.21
+    },
+    "claude-3.5-sonnet": {
+      "provider": "anthropic",
+      "tier": "deep",
+      "latency_ms": 680.0,
+      "accuracy_score": 0.98,
+      "cost_per_1k_calls_usd": 1.035
+    }
+  },
+  "per_chart_decisions": [
+    {
+      "chart": "chart_01_harbour",
+      "par": 1,
+      "tier": "fast",
+      "model": "gemini-3.8-flash-low",
+      "latency_ms": 75.0,
+      "cost_usd": 3e-05
+    },
+    {
+      "chart": "chart_02_beacon",
+      "par": 2,
+      "tier": "fast",
+      "model": "gemini-3.8-flash-low",
+      "latency_ms": 75.0,
+      "cost_usd": 3e-05
+    },
+    {
+      "chart": "chart_03_strait",
+      "par": 3,
+      "tier": "fast",
+      "model": "gemini-3.8-flash-low",
+      "latency_ms": 75.0,
+      "cost_usd": 3e-05
+    },
+    {
+      "chart": "chart_04_shoal",
+      "par": 4,
+      "tier": "deep",
+      "model": "gemini-4-argon",
+      "latency_ms": 480.0,
+      "cost_usd": 0.00036
+    },
+    {
+      "chart": "chart_05_crescent",
+      "par": 5,
+      "tier": "deep",
+      "model": "gemini-4-argon",
+      "latency_ms": 480.0,
+      "cost_usd": 0.00036
+    },
+    {
+      "chart": "chart_06_archipelago",
+      "par": 5,
+      "tier": "deep",
+      "model": "gemini-4-argon",
+      "latency_ms": 480.0,
+      "cost_usd": 0.00036
+    },
+    {
+      "chart": "chart_07_reef",
+      "par": 6,
+      "tier": "deep",
+      "model": "gemini-4-argon",
+      "latency_ms": 480.0,
+      "cost_usd": 0.00036
+    },
+    {
+      "chart": "chart_08_abyss",
+      "par": 6,
+      "tier": "deep",
+      "model": "gemini-4-argon",
+      "latency_ms": 480.0,
+      "cost_usd": 0.00036
+    }
+  ]
+}

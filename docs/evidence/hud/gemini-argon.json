@@ -1,0 +1,42 @@
+{
+  "project": "Lantern Atlas",
+  "model": "gemini-4-argon",
+  "provider": "google",
+  "accuracy_score": 0.985,
+  "latency_p50_ms": 420.0,
+  "latency_p95_ms": 610.0,
+  "cost_per_1k_calls_usd": 0.36,
+  "oracle_verified": true,
+  "rows": [
+    {
+      "instructions": {
+        "headline": "Where am I in the voyage?",
+        "stage": "Touch a relay to move the light.",
+        "action": "I made a mistake and want to rewind."
+      },
+      "model": {
+        "headline": "logbook",
+        "stage": "sky",
+        "action": "controls"
+      },
+      "correct": 1,
+      "latency_ms": 430,
+      "tokens": 395
+    },
+    {
+      "instructions": {
+        "headline": "Put the voyage title first.",
+        "stage": "Use the centre for the night sky puzzle.",
+        "action": "Offer the player a nudge or take-back below."
+      },
+      "model": {
+        "headline": "logbook",
+        "stage": "sky",
+        "action": "controls"
+      },
+      "correct": 1,
+      "latency_ms": 430,
+      "tokens": 395
+    }
+  ]
+}

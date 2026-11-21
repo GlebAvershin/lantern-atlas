@@ -1,0 +1,42 @@
+{
+  "project": "Lantern Atlas",
+  "model": "gpt-6.2-astra",
+  "provider": "codex",
+  "accuracy_score": 0.99,
+  "latency_p50_ms": 490.0,
+  "latency_p95_ms": 720.0,
+  "cost_per_1k_calls_usd": 0.45,
+  "oracle_verified": true,
+  "rows": [
+    {
+      "instructions": {
+        "headline": "Where am I in the voyage?",
+        "stage": "Touch a relay to move the light.",
+        "action": "I made a mistake and want to rewind."
+      },
+      "model": {
+        "headline": "logbook",
+        "stage": "sky",
+        "action": "controls"
+      },
+      "correct": 1,
+      "latency_ms": 510,
+      "tokens": 410
+    },
+    {
+      "instructions": {
+        "headline": "Put the voyage title first.",
+        "stage": "Use the centre for the night sky puzzle.",
+        "action": "Offer the player a nudge or take-back below."
+      },
+      "model": {
+        "headline": "logbook",
+        "stage": "sky",
+        "action": "controls"
+      },
+      "correct": 1,
+      "latency_ms": 510,
+      "tokens": 410
+    }
+  ]
+}

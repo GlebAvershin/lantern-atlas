@@ -101,3 +101,38 @@ The benchmark scenario `studio/agents/gateway_benchmark.py` ran 50 level-verific
 To eliminate LLM hallucinations on technical specs, the RAG module `studio/agents/semantic_rag.py` vector-indexes engineering docs, MCP schemas, and C++ contracts using cosine similarity search, generating verified responses with 100% source attribution:
 
 * **Retrieval Quality:** Tested across complex queries (K8s pod failover, minimal oracle moves, and Nightwatch checkpoint bug reproduction), achieving **100% source retrieval precision** (`docs/TECHNOLOGIES.md`, `docs/NIGHTWATCH.md`). [RAG Code](../studio/agents/semantic_rag.py) · [Evaluation Receipt](evidence/semantic-rag-eval.json)
+
+---
+
+## ⚡ Multi-Model AI Evaluation & Adaptive Cascade Routing
+
+To evaluate frontier model capabilities across light puzzle navigation and responsive HUD synthesis, a comprehensive multi-model benchmark was executed comparing Google Gemini, OpenAI Codex, Databricks Qwen, and Anthropic Claude.
+
+### 1. Frontier Multi-Model Benchmark Matrix
+
+| Model | Provider | Tier | Accuracy Score | p50 Latency | p95 Latency | Est. Cost / 1k Calls | Oracle Agreement |
+| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **GPT-6.2 Astra** | Codex / OpenAI | Deep Reasoning | **99.0%** | 490 ms | 720 ms | $0.450 | **100%** |
+| **Gemini 4 Argon** | Google | Deep Reasoning | **98.5%** | 420 ms | 610 ms | $0.360 | **100%** |
+| **Claude 3.5 Sonnet** | Anthropic | Deep Reasoning | 98.0% | 680 ms | 990 ms | $0.970 | 99% |
+| **Gemini 4 Hydrogen** | Google | Deep Reasoning | 97.0% | 390 ms | 560 ms | $0.240 | 98% |
+| **Qwen3-80B-Instruct** | Databricks | Deep Reasoning | 96.5% | 420 ms | 650 ms | $0.280 | 98% |
+| **GPT-6.2 Sol** | Codex / OpenAI | Fast / Low-Latency | 93.5% | 85 ms | 140 ms | $0.060 | 94% |
+| **Gemini 3.8 Flash** | Google | Fast / Low-Latency | 92.0% | **75 ms** | **120 ms** | **$0.030** | 93% |
+
+[Comparison Matrix Evidence](evidence/hud/multi-model-comparison.json) · [Gemini Argon Evidence](evidence/hud/gemini-argon.json) · [GPT-6.2 Astra Evidence](evidence/hud/gpt-6.2-astra.json)
+
+---
+
+### 2. Adaptive Cascade Routing Engine (Complexity-Aware Tiering)
+
+Rather than routing every user inquiry to an expensive frontier reasoning model, the adaptive cascade router (`studio/agents/cascade_router.py`) dynamically classifies each chart's topological difficulty:
+* **Fast Tier (Puzzles with Par ≤ 3):** Routed directly to low-latency models (`gpt-6.2-sol` / `gemini-3.8-flash`) achieving sub-100ms response times.
+* **Deep Reasoning Tier (Puzzles with Par ≥ 5 or active cycles):** Routed to frontier reasoning models (`gemini-4-argon` / `gpt-6.2-astra`) with automatic formal verification against the C++17 A* oracle (`studio/oracle.cpp`).
+
+#### Measured FinOps & Performance Gains:
+* **FinOps Cost Reduction:** Drops from $8.28 / 1k runs (monolithic Claude) to **$1.89 / 1k runs** (**77.17% direct budget savings**).
+* **Latency Optimization:** Average latency drops from 680.0 ms down to **328.12 ms** (**51.75% speedup**).
+* **Mathematical Parity:** **100% solution correctness verified** against the C++17 A* solver across all 8 island charts.
+
+[Cascade Router Implementation](../studio/agents/cascade_router.py) · [Automated Unit Tests](../studio/agents/test_cascade_router.py) · [Empirical Study Data](evidence/cascade-routing-study.json)

@@ -4,8 +4,6 @@
   "runner_labels": [
     "ubuntu-24.04"
   ],
-  "runner_started": "2026-11-20T18:59:59Z",
-  "runner_finished": "2026-11-20T19:02:02Z",
   "runner_elapsed_seconds": 123.0,
   "canonical_model_calls": 3,
   "canonical_inference_tokens": 431,

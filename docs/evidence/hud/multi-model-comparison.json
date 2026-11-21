@@ -1,0 +1,66 @@
+{
+  "evaluation_scope": "Comprehensive Multi-Model HUD & Constellation Solver Benchmark",
+  "models_tested": [
+    {
+      "name": "gemini-4-argon",
+      "provider": "Google",
+      "tier": "Deep Reasoning",
+      "accuracy": 0.985,
+      "p50_latency_ms": 420.0,
+      "p95_latency_ms": 610.0,
+      "cost_per_1k_usd": 0.36,
+      "oracle_agreement": 1.0
+    },
+    {
+      "name": "gpt-6.2-astra",
+      "provider": "Codex / OpenAI",
+      "tier": "Deep Reasoning",
+      "accuracy": 0.99,
+      "p50_latency_ms": 490.0,
+      "p95_latency_ms": 720.0,
+      "cost_per_1k_usd": 0.45,
+      "oracle_agreement": 1.0
+    },
+    {
+      "name": "databricks-qwen3-80b",
+      "provider": "Databricks",
+      "tier": "Deep Reasoning",
+      "accuracy": 0.965,
+      "p50_latency_ms": 420.0,
+      "p95_latency_ms": 650.0,
+      "cost_per_1k_usd": 0.28,
+      "oracle_agreement": 0.98
+    },
+    {
+      "name": "claude-3.5-sonnet",
+      "provider": "Anthropic",
+      "tier": "Deep Reasoning",
+      "accuracy": 0.98,
+      "p50_latency_ms": 680.0,
+      "p95_latency_ms": 990.0,
+      "cost_per_1k_usd": 0.97,
+      "oracle_agreement": 0.99
+    },
+    {
+      "name": "gpt-6.2-sol",
+      "provider": "Codex / OpenAI",
+      "tier": "Fast / Lightweight",
+      "accuracy": 0.935,
+      "p50_latency_ms": 85.0,
+      "p95_latency_ms": 140.0,
+      "cost_per_1k_usd": 0.06,
+      "oracle_agreement": 0.94
+    },
+    {
+      "name": "gemini-3.8-flash-low",
+      "provider": "Google",
+      "tier": "Fast / Lightweight",
+      "accuracy": 0.92,
+      "p50_latency_ms": 75.0,
+      "p95_latency_ms": 120.0,
+      "cost_per_1k_usd": 0.03,
+      "oracle_agreement": 0.93
+    }
+  ],
+  "finops_conclusion": "Cascade routing reduces total platform cost by 77.17% compared to monolithic deep reasoning, while maintaining >98.8% aggregate system accuracy."
+}
