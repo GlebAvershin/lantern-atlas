@@ -26,7 +26,7 @@
 * 🌐 **[Играть в браузере (WebAssembly)](https://glebavershin.github.io/lantern-atlas/)** — Восемь опубликованных карт маяков.
 * 🍏 **[Скачать сборку для macOS](https://github.com/GlebAvershin/lantern-atlas/releases)** — Настольная версия.
 * 🎥 **[Видео игрового процесса Nightwatch](evidence/nightwatch.mp4)** — Подсказки решателя и система чекпоинтов.
-* 📑 **[Инженерный отчёт и архитектура шлюза](docs/TECHNOLOGIES.md)** — Журналы K8s отказоустойчивости, Circuit Breaker и FinOps.
+* 📑 **[Инженерный отчёт и архитектура шлюза](docs/TECHNOLOGIES.ru.md)** — Журналы K8s отказоустойчивости, Circuit Breaker и FinOps.
 * 🐞 **[Разбор регрессии сохранений Nightwatch](docs/NIGHTWATCH.md)** — Локализация бага чекпоинта с помощью AI-ревью.
 
 ---
@@ -163,7 +163,7 @@ Lantern Atlas/
 │   ├── oracle.cpp          # Независимый C++17 решатель минимальных ходов
 │   └── chart_mcp.py        # Сервер Model Context Protocol
 ├── docs/                   # Инженерная документация
-│   ├── TECHNOLOGIES.md     # Полный отчёт об архитектуре и исследованиях
+│   ├── TECHNOLOGIES.ru.md  # Полный отчёт об архитектуре и исследованиях
 │   ├── NIGHTWATCH.md       # Разбор бага чекпоинта через AI-ревью
 │   └── evidence/           # Сырые квитанции, бенчмарки и логи
 └── evidence/               # Игровые медиафайлы и видео геймплея
