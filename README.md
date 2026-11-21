@@ -25,7 +25,7 @@
 
 * 🌐 **[Play in Browser (WebAssembly)](https://glebavershin.github.io/lantern-atlas/)** — Eight published lighthouse charts.
 * 🍏 **[Download macOS App Build](https://github.com/GlebAvershin/lantern-atlas/releases)** — Standalone desktop build.
-* 🎥 **[Watch Gameplay Demonstration (MP4)](https://raw.githubusercontent.com/GlebAvershin/lantern-atlas/main/evidence/nightwatch.mp4)** — Solver hint & checkpoint walkthrough video.
+* 🎥 **[Watch Gameplay Demonstration (MP4)](evidence/nightwatch.mp4)** — Solver hint & checkpoint walkthrough video.
 * 📑 **[Engineering Architecture & Gateway Dossier](docs/TECHNOLOGIES.md)** — K8s failover logs, circuit breaker benchmarks, and FinOps data.
 * 🐞 **[Nightwatch Checkpoint Regression Analysis](docs/NIGHTWATCH.md)** — AI code review reproduction of savegame bug.
 

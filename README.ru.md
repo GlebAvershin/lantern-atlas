@@ -25,7 +25,7 @@
 
 * 🌐 **[Играть в браузере (WebAssembly)](https://glebavershin.github.io/lantern-atlas/)** — Восемь опубликованных карт маяков.
 * 🍏 **[Скачать сборку для macOS](https://github.com/GlebAvershin/lantern-atlas/releases)** — Настольная версия.
-* 🎥 **[Видео игрового процесса (MP4)](https://raw.githubusercontent.com/GlebAvershin/lantern-atlas/main/evidence/nightwatch.mp4)** — Запись прохождения карты и работы решателя.
+* 🎥 **[Видео игрового процесса (MP4)](evidence/nightwatch.mp4)** — Запись прохождения карты и работы решателя.
 * 📑 **[Инженерный отчёт и архитектура шлюза](docs/TECHNOLOGIES.ru.md)** — Журналы K8s отказоустойчивости, Circuit Breaker и FinOps.
 * 🐞 **[Разбор регрессии сохранений Nightwatch](docs/NIGHTWATCH.ru.md)** — Локализация бага чекпоинта с помощью AI-ревью.
 
