@@ -1,0 +1,26 @@
+{
+  "workload": {
+    "total_requests": 50,
+    "unique_briefs": 2,
+    "cold_inferences": 2,
+    "cache_hits": 48,
+    "cache_hit_rate": 0.96
+  },
+  "latency_ms": {
+    "cold_p50": 6759.29,
+    "cold_p95": 6759.29,
+    "cold_p99": 6759.29,
+    "cache_p50": 0.05,
+    "cache_p95": 0.05,
+    "overall_p95": 6759.29
+  },
+  "finops_tokens": {
+    "total_tokens_billed": 2158,
+    "total_tokens_saved": 51792,
+    "savings_percentage": 96.0
+  },
+  "circuit_breaker": {
+    "final_state": "CLOSED",
+    "healthy": true
+  }
+}
