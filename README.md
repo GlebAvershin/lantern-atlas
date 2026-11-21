@@ -25,7 +25,7 @@
 
 * 🌐 **[Play in Browser (WebAssembly)](https://glebavershin.github.io/lantern-atlas/)** — Eight published lighthouse charts.
 * 🍏 **[Download macOS App Build](https://github.com/GlebAvershin/lantern-atlas/releases)** — Standalone desktop build.
-* 🎥 **[Watch Gameplay Demonstration (MP4)](evidence/nightwatch.mp4)** — Solver hint & checkpoint walkthrough video.
+* 🎥 **[Watch Gameplay Video (In-Browser Player)](#-gameplay-preview)** — Solver hint & checkpoint walkthrough video.
 * 📑 **[Engineering Architecture & Gateway Dossier](docs/TECHNOLOGIES.md)** — K8s failover logs, circuit breaker benchmarks, and FinOps data.
 * 🐞 **[Nightwatch Checkpoint Regression Analysis](docs/NIGHTWATCH.md)** — AI code review reproduction of savegame bug.
 
@@ -45,8 +45,13 @@ Lantern Atlas serves as a high-performance **AI Platform Infrastructure & Micros
 
 ---
 
+## 🎥 Gameplay Preview
+
 <p align="center">
   <img src="evidence/nightwatch-preview.gif" alt="Lantern Atlas Gameplay Preview" width="85%" style="border-radius: 6px;" />
+</p>
+<p align="center">
+  <sub><i>Interactive Godot lighthouse puzzle: beam transmission & solver hints • Source video: <a href="evidence/nightwatch.mp4">nightwatch.mp4</a></i></sub>
 </p>
 
 ---
