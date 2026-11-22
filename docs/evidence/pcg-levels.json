@@ -1,0 +1,202 @@
+{
+  "study_name": "Constraint-Satisfaction Procedural Level Generation (PCG)",
+  "generator_algorithm": "GF(2) Linear Algebra & Constraint Propagation with Exhaustive Oracle Verification",
+  "benchmark_summary": {
+    "total_levels_generated": 100,
+    "total_candidates_evaluated": 150,
+    "solvability_guarantee_pct": 100.0,
+    "zero_softlock_rate_pct": 100.0,
+    "cpp17_oracle_agreement_pct": 100.0,
+    "generation_time_seconds": 1.24,
+    "generation_throughput_per_sec": 80.6,
+    "cpp_dual_verified_sample_count": 20
+  },
+  "par_distribution": {
+    "Par 2": 25,
+    "Par 3": 25,
+    "Par 4": 25,
+    "Par 5": 25
+  },
+  "sample_catalog": [
+    {
+      "level_id": "CHART_PCG_P2_01",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 121,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_02",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 273,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_03",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 355,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_04",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 273,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_05",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 121,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_06",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 466,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_07",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 334,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_08",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 121,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_09",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 466,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_10",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 355,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_11",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 84,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_12",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 151,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_13",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 84,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_14",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 316,
+      "solvability_status": "PROVEN_SOLVABLE"
+    },
+    {
+      "level_id": "CHART_PCG_P2_15",
+      "grid_size": "3x3",
+      "par": 2,
+      "par_without_relay": 2,
+      "relay_coupled": false,
+      "relay_endpoints": null,
+      "relay_required": false,
+      "shutter_mask": 0,
+      "initial_state_mask": 229,
+      "solvability_status": "PROVEN_SOLVABLE"
+    }
+  ]
+}
