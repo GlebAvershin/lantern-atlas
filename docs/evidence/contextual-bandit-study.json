@@ -1,0 +1,27 @@
+{
+  "study_title": "Cross-Game Contextual Bandit (LinUCB) Dynamic Cosmetic Personalization",
+  "total_simulated_impressions": 20000,
+  "execution_time_seconds": 3.5,
+  "performance_comparison": {
+    "random_recommendations_ctr_pct": 35.49,
+    "static_top_charts_ctr_pct": 38.0,
+    "linucb_contextual_bandit_ctr_pct": 61.28,
+    "relative_uplift_over_static_pct": 61.26,
+    "relative_uplift_over_random_pct": 72.64
+  },
+  "arm_distribution_sample": {
+    "atlas_aurora_lens": 193,
+    "atlas_brass_frame": 251,
+    "soccer_golden_ball": 637,
+    "soccer_retro_kit": 129,
+    "mosaic_azure_glaze": 254,
+    "mosaic_pearl_pier": 165,
+    "freight_carbon_drone": 0,
+    "freight_amber_visor": 371
+  },
+  "ethical_monetization_principles": [
+    "Zero paywalls or lootboxes: 100% of personalized items are claimable through earned Battle Pass tokens.",
+    "LinUCB aligns item recommendations with player artistic taste rather than pressure tactics or FOMO timers.",
+    "Dynamic catalog rotation ensures players discover cosmetic assets across all 4 titles organically."
+  ]
+}

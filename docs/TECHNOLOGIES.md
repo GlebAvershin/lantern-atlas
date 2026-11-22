@@ -160,3 +160,27 @@ To scale puzzle content beyond handcrafted charts without human authoring bottle
 | **Generation Throughput** | **80.6 levels / sec** | Highly optimized bitwise arithmetic in Python/C++ |
 
 [PCG Generator Implementation](../studio/research/pcg_generator.py) · [Unit Test Suite](../studio/research/test_pcg_generator.py) · [Generated Level Dataset](evidence/pcg-levels.json)
+
+---
+
+## 📈 Cross-Game LiveOps & Dynamic LinUCB Monetization Bandit
+
+To unite the four independent game titles (*Lantern Atlas*, *Soccerpoly*, *Mosaic Pier*, and *Blackout Freight*) under an interconnected ecosystem without intrusive ad-tech, a centralized **Cross-Game LiveOps Engine** and **Contextual Bandit Recommender** were developed:
+
+### 1. Unified Seasonal Architecture & Meta-Contracts
+* **FastAPI & ACID SQLite Persistence (`studio/liveops/liveops_engine.py`):** Coordinates 45-day seasonal campaigns (`Northern Expedition`) across all 4 titles with zero hardcoded calendar dates.
+* **Cross-Game Meta-Contracts:** Players earn Battle Pass XP by combining mechanics across genres (e.g., solving light charts in Lantern Atlas + winning auctions in Soccerpoly, or stealth battery recovery in Blackout Freight + tile combos in Mosaic Pier).
+* **30-Tier Battle Pass:** Unlocks cosmetic prisms, retro kits, glass patterns, and tactical drone skins.
+
+### 2. LinUCB Contextual Bandit for Dynamic Cosmetic Personalization (20,000 Impressions)
+Rather than static storefronts or aggressive monetization, a disjoint Linear Upper Confidence Bound (**LinUCB**) bandit (`studio/liveops/contextual_bandit.py`) personalizes cosmetic offerings based on player playstyle vectors $\mathbf{x} \in \mathbb{R}^6$ (velocity, tier, session frequency, token balance, genre affinity, aesthetic preference):
+
+| Recommender Policy | Click-Through / Claim Rate | Relative Uplift | Regret Characteristic |
+| :--- | :---: | :---: | :--- |
+| **Random Uniform Rotation** | 35.49% | Baseline | High exploration waste |
+| **Static Popularity Top-Charts** | 38.00% | +7.1% | Stale catalog, ignores niche tastes |
+| **LinUCB Contextual Bandit** | **61.28%** | **+61.26% Uplift** | Sub-linear logarithmic regret convergence |
+
+*Ethical Guarantee: 100% of recommended cosmetics are claimable via in-game earned Battle Pass tokens with zero real-money paywalls or lootboxes.*
+
+[LiveOps Backend Engine](../studio/liveops/liveops_engine.py) · [LinUCB Bandit Implementation](../studio/liveops/contextual_bandit.py) · [LiveOps Evidence Data](evidence/liveops-cross-game.json) · [Bandit Study Dataset](evidence/contextual-bandit-study.json)

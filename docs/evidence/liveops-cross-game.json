@@ -1,0 +1,94 @@
+{
+  "study_title": "Cross-Game LiveOps Engine (Multi-Game Battle Pass & Meta-Contracts)",
+  "active_season": {
+    "season_id": "SEASON_NORTHERN_EXPEDITION",
+    "title": "Northern Expedition \u00b7 Cross-Game Frontier",
+    "duration_days": 45,
+    "active_games": [
+      "atlas",
+      "soccer",
+      "mosaic",
+      "freight"
+    ],
+    "status": "ACTIVE"
+  },
+  "cross_game_contracts": [
+    {
+      "contract_id": "CONTRACT_01",
+      "season_id": "SEASON_NORTHERN_EXPEDITION",
+      "title": "Archipelago Tactician",
+      "description": "Solve 3 charts in Lantern Atlas and win 2 auctions in Soccerpoly",
+      "target_games": [
+        "atlas",
+        "soccer"
+      ],
+      "goal_metric": "tactical_wins",
+      "target_value": 5,
+      "xp_reward": 750,
+      "token_reward": 150
+    },
+    {
+      "contract_id": "CONTRACT_02",
+      "season_id": "SEASON_NORTHERN_EXPEDITION",
+      "title": "Shadow & Glass",
+      "description": "Extract 3 batteries in Blackout Freight and clear 4 boards in Mosaic Pier",
+      "target_games": [
+        "freight",
+        "mosaic"
+      ],
+      "goal_metric": "stealth_puzzles",
+      "target_value": 7,
+      "xp_reward": 900,
+      "token_reward": 200
+    },
+    {
+      "contract_id": "CONTRACT_03",
+      "season_id": "SEASON_NORTHERN_EXPEDITION",
+      "title": "Grand Quad Master",
+      "description": "Participate in matches across all 4 titles during active season",
+      "target_games": [
+        "atlas",
+        "soccer",
+        "mosaic",
+        "freight"
+      ],
+      "goal_metric": "quad_matches",
+      "target_value": 4,
+      "xp_reward": 1500,
+      "token_reward": 400
+    }
+  ],
+  "battlepass_progression_sample": {
+    "player_alice": {
+      "player_id": "PLAYER_ALICE",
+      "season_id": "SEASON_NORTHERN_EXPEDITION",
+      "total_xp": 750,
+      "current_tier": 2,
+      "tier_progress_pct": 50.0,
+      "unlocked_rewards": [
+        "TIER_2_REWARD"
+      ]
+    },
+    "player_bob": {
+      "player_id": "PLAYER_BOB",
+      "season_id": "SEASON_NORTHERN_EXPEDITION",
+      "total_xp": 900,
+      "current_tier": 2,
+      "tier_progress_pct": 80.0,
+      "unlocked_rewards": [
+        "TIER_2_REWARD"
+      ]
+    }
+  },
+  "supported_client_titles": [
+    "Lantern Atlas",
+    "Soccerpoly",
+    "Mosaic Pier",
+    "Blackout Freight"
+  ],
+  "architecture_features": [
+    "Centralized SQLite / PostgreSQL compatible state persistence with atomic ACID transactions.",
+    "Zero calendar date coupling: seasons utilize relative duration windows and epoch ticks.",
+    "Cross-game contracts reward unified progression across distinct genres (Puzzle, Sports, Strategy, Stealth)."
+  ]
+}
